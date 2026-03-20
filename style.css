@@ -1,0 +1,205 @@
+/*Fonts & Common Styles*/
+@font-face {
+  font-family: 'Rumutocu';
+  src: url('/fonts/rumutocu/Rumutocu-nMpg.ttf');
+}
+
+@font-face {
+  font-family: 'Clubbed';
+  src: url('/fonts/clubbedToLife/ClubbedToLife-aemJ.ttf');
+}
+
+:root {
+  --iron: #444545;
+  --smoke: #F6F4F4;
+  --onyx: #0A0A0A;
+  --glaucous: #6987C9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Clubbed';
+  background-color: var(--onyx);
+  color: var(--smoke);
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+
+h1, h2 {
+  font-family: 'Rumutocu';
+}
+
+a {
+  text-decoration: none;
+}
+
+/*Nav Styles*/
+
+  /*Desktop*/
+.navLinks {
+  display: flex;
+}
+
+.navLinks a {
+  text-decoration: none;
+  padding: 25px;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--smoke);
+  margin: 0 5px 0 5px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--iron);
+  padding: 1rem 2rem;
+}
+
+  /*Mobile Nav*/
+
+.mobileNav {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.mobileNav span {
+  width: 25px;
+  height: 3px;
+  background: var(--smoke);
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    position: fixed;
+    top: 40px;
+    left: 0;
+    background-color: var(--iron);
+    flex-direction: column;
+    width: 200px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 5000;
+    border-radius: 0 0 0 10px;
+  }
+
+  .navLinks.open {
+    max-height: 700px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 1rem 0;
+    z-index: 5000;
+  }
+
+  .navLinks button {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .mobileNav {
+    display: flex;
+  }
+}
+
+/*Hero Styles*/
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.heroVideo {
+  position: absolute;
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  color: var(--smoke);
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.heroContent a {
+  background-color: var(--glaucous);
+  color: var(--smoke);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.homePortal {
+  padding-top: 5vh;
+}
+
+.navCard {
+  padding: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cardContent {
+  padding: 2.5vh;
+  border: 4px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(var(--onyx), var(--onyx)) padding-box, linear-gradient(45deg, #ff6b6b, #4ecdc4) border-box;
+  /*Border design created with help from ChatGPT (OpenAI, 2026)*/
+  /*the first gradient makes the card background completely black up to the padding on the box not under the border*/
+  /*the second gradient fills the entire background including under the border, the transparent border allows the gradient to show through*/
+  width: fit-content;
+}
+
+.cardContent > p {
+  text-align: center;
+}
+
+.cardContent a {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 1.5em;
+  padding: 20px;
+  background-color: var(--glaucous);
+  border-radius: 10px;
+  color: var(--smoke);
+}
+
+.imageCarousel {
+  display: inline-flex;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+}
