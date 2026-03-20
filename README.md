@@ -1,4 +1,4 @@
-# Portfolio Website - Josh Bransford
+# Entranced by Dance - Josh Bransford
 
 ## About this Project
 The capstone project for my Web Page Design II (ITD-210) course at Northern Virginia Community College. 
