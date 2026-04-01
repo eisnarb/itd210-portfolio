@@ -5,6 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Festival Finder - A Beginner's Guide to EDM</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      padding-top: var(--navHeight);
+    }
+
+    /*Set grid for the page*/
+    main {
+      display: grid;
+      grid-template-columns: 250px 1fr 250px;
+      grid-template-areas: 
+      "intro intro intro"
+      "filter search empty"
+      "pages pages pages"
+    }
+
+    #intro {
+      grid-area: intro;
+      text-align: center;
+    }
+
+    .filter-sidebar {
+      grid-area: filter;
+    }
+
+    .search-container {
+      grid-area: search;
+      background-color: var(--iron);
+      height: auto;
+      text-align: end;
+    }
+
+    /*Searchbar styles*/
+    input {
+      width: 40vw;
+      min-width: 200px;
+      height: 30px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      border: 1px #2ab7ca solid;
+      border-radius: 5px;
+      background-color: #44454573;
+      font-size: 18px;
+      color: var(--smoke);
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #2ab7ca;
+    }
+
+    #searchEvent {
+      border: 1px #2ab7ca groove;
+      border-radius: 20px;
+      background-color: #6987c94d;
+      color: #2ab7ca;
+      width: 100px;
+      height: 40px;
+      font-size: 20px;
+      text-transform: uppercase;
+    }
+
+    #searchEvent:hover {
+      cursor: pointer;
+      transform: scale(1.03);
+      transition: all 0.2s;
+    }
+
+    /*Results Styles*/
+    #searchPages {
+      grid-area: pages;
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .event-card {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-areas: "name location date"; 
+      align-items: center;
+      gap: 10px;
+      padding: 5px;
+    }
+
+    .event-card:hover {
+      background-color: var(--glaucous);
+    }
+
+    .event-name{
+      grid-area: name;
+      text-align: center;
+    }
+
+    .event-location {
+      grid-area: location;
+      text-align: center;
+    }
+
+    .event-date {
+      grid-area: date;
+      text-align: right;
+    }
+
+    footer {
+      bottom: 0;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -17,11 +126,94 @@
         <a href="about-edm.html">What is EDM?</a>
         <a href="edm-culture.html">EDM Culture</a>
         <a href="concert-guide.html">Concert Guide</a>
+        <a href="about.html">About</a>
       </div>
     </nav>
   </header>
-  <main></main>
-  <footer></footer>
-  <script src="js/script.js"></script>  
+  <main>
+    <div id="intro">
+      <h1>Festival Finder</h1>
+      <p>Now that you've learned the ropes it's time to go a show!</p>
+      <hr>
+      <input type="text"><button id="searchEvent">search</button>
+    </div>
+    <div class="filter-sidebar">
+      <p>Search filter content goes here</p>
+    </div>
+    <div class="search-container" id="searchResults">
+      You haven't searched for anything yet!
+    </div>
+    <div id="searchPages">
+      <button id="prev" disabled><img src=""></button>
+      <span id="pageNumber">1</span>
+      <button id="next"><img src=""></button>
+    </div>
+  </main>
+  <footer><p>&copy; 2026</p> <p>Josh Bransford</p> <p>NVCC ITD-210</p></footer>
+  <script src="js/script.js" defer></script>
+  <script>
+    const container = document.getElementById("searchResults");
+
+    const searchBtn = document.getElementById("searchEvent");
+
+    //Hide page controls on page load
+    document.getElementById("searchPages").style.display = "none";
+
+    //API Fetch request function
+    function getEvent() {
+      container.textContent = "Loading search..."
+
+      fetch("https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&segmentName=Music&genreId=KnvZfZ7vAvF&apikey=HN4bQHwCtNITu9RVhzQ5qmlAXd9YGez4")
+
+      .then(function(response) {
+        return response.json();
+      })
+
+      .then(function(data) {
+        //Clear data in container
+        container.innerHTML = "";
+        //Show page controls on search
+        document.getElementById("searchPages").style.display = "block";
+
+        //Guard in case there are no results in the API fetch
+        if (!data._embedded || !data._embedded.events) {
+          container.innerHTML = "<p>No events found.</p>";
+          return;
+        }
+
+        //Results display
+        data._embedded.events.forEach(function(item) {
+          //Date formatting
+          const rawDate = item.dates.start.localDate
+          const userDate = new Date(rawDate + "T00:00:00").toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          });
+
+          //Find and package location info
+          const venue = item._embedded && item._embedded.venues && item._embedded.venues[0];
+          const location = venue ? venue.city.name + ', ' + venue.state.stateCode : 'Location TBA';
+
+          //Create card and add class for styling
+          var card = document.createElement("div");
+          card.classList.add("event-card");
+          //Add event info to the card
+          card.innerHTML =
+          '<p class="event-name">' + item.name + '</p>' + '<p class="event-location">' + location + '</p>' + '<p class="event-date">' + userDate + '</p>';
+          container.appendChild(card);
+        });
+      })
+
+      //Catch any other errors
+      .catch(function(error) {
+        container.innerHTML = 
+        "<p>Sorry, data could not be loaded. Please try again later.</p>";
+        console.error("Fetch error:", error);
+      })
+    }
+
+    searchBtn.addEventListener("click", getEvent);
+  </script>
 </body>
 </html>
