@@ -16,6 +16,7 @@
       grid-template-columns: 250px 1fr 250px;
       grid-template-areas: 
       "intro intro intro"
+      "filter header empty"
       "filter search empty"
       "pages pages pages"
     }
@@ -32,8 +33,10 @@
     .search-container {
       grid-area: search;
       background-color: var(--iron);
-      height: auto;
-      text-align: end;
+      height: 70vh;
+      overflow: scroll;
+      scrollbar-gutter: stable;
+      text-align: center;
     }
 
     /*Searchbar styles*/
@@ -73,6 +76,31 @@
     }
 
     /*Results Styles*/
+    #resultsHeader {
+      grid-area: header;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      align-items: center;
+      top: var(--navHeight);
+      padding-right: 22px;
+      position: sticky;
+      background-color: var(--glaucous);
+      color: var(--smoke);
+      border-bottom: 2px #2ab7ca solid;
+    }
+
+    .name {
+      text-align: center;
+    }
+
+    .location {
+      text-align: center;
+    }
+
+    .date {
+      text-align: right;
+    }
+
     #searchPages {
       grid-area: pages;
       justify-self: center;
@@ -135,18 +163,23 @@
       <h1>Festival Finder</h1>
       <p>Now that you've learned the ropes it's time to go a show!</p>
       <hr>
-      <input type="text"><button id="searchEvent">search</button>
+      <input type="text" placeholder="Name of Event/Artist/Location" id="eventInput"><button id="searchEvent">search</button>
     </div>
     <div class="filter-sidebar">
       <p>Search filter content goes here</p>
     </div>
+    <div id="resultsHeader">
+        <p class="name">Event Name</p>
+        <p class="location">Location</p>
+        <p class="date">Date</p>
+      </div>
     <div class="search-container" id="searchResults">
       You haven't searched for anything yet!
     </div>
     <div id="searchPages">
-      <button id="prev" disabled><img src=""></button>
-      <span id="pageNumber">1</span>
-      <button id="next"><img src=""></button>
+      <button id="prev" disabled><img src="images/previous.svg" width="25px"></button>
+      <span id="pageNumber"></span>
+      <button id="next"><img src="images/next.svg" width="25px"></button>
     </div>
   </main>
   <footer><p>&copy; 2026</p> <p>Josh Bransford</p> <p>NVCC ITD-210</p></footer>
@@ -154,16 +187,35 @@
   <script>
     const container = document.getElementById("searchResults");
 
+    const inputBtn = document.getElementById("eventInput");
+
     const searchBtn = document.getElementById("searchEvent");
+
+    const prevBtn = document.getElementById("prev");
+
+    const nextBtn = document.getElementById("next");
+
+    const pageSize = 25;
+
+    let currentPage = 0;
 
     //Hide page controls on page load
     document.getElementById("searchPages").style.display = "none";
 
-    //API Fetch request function
+    //New search function
     function getEvent() {
+      //reset page to the first
+      currentPage = 0;
+      fetchEvents(currentPage);
+    }
+
+    //API Fetch request function
+    function fetchEvents(page) {
+      //get search term
+      const keyword = document.querySelector("input").value;
       container.textContent = "Loading search..."
 
-      fetch("https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&segmentName=Music&genreId=KnvZfZ7vAvF&apikey=HN4bQHwCtNITu9RVhzQ5qmlAXd9YGez4")
+      fetch("https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&segmentName=Music&genreId=KnvZfZ7vAvF&keyword=" + keyword + "&size=" + pageSize + "&page=" + page + "&apikey=HN4bQHwCtNITu9RVhzQ5qmlAXd9YGez4")
 
       .then(function(response) {
         return response.json();
@@ -173,13 +225,19 @@
         //Clear data in container
         container.innerHTML = "";
         //Show page controls on search
-        document.getElementById("searchPages").style.display = "block";
+        document.getElementById("searchPages").style.display = "flex";
 
         //Guard in case there are no results in the API fetch
         if (!data._embedded || !data._embedded.events) {
           container.innerHTML = "<p>No events found.</p>";
           return;
         }
+
+        //Page number info
+        const totalPages = data.page.totalPages;
+        document.getElementById("prev").disabled = page === 0; //Back button disabled if first page
+        document.getElementById("next").disabled = page >= totalPages - 1; //Next button disabled if last page
+        document.getElementById("pageNumber").textContent = "Page " + (page + 1) + " of " + totalPages; //Display page number out of total pages
 
         //Results display
         data._embedded.events.forEach(function(item) {
@@ -213,7 +271,24 @@
       })
     }
 
+    //Event listeners
+    prevBtn.addEventListener("click", function() {
+      currentPage--;
+      fetchEvents(currentPage);
+    })
+
+    nextBtn.addEventListener("click", function() {
+      currentPage++;
+      fetchEvents(currentPage);
+    })
+
     searchBtn.addEventListener("click", getEvent);
+
+    inputBtn.addEventListener("keydown", function(event) {
+      if(event.key === "Enter") {
+        getEvent();
+      }
+    });
   </script>
 </body>
 </html>
