@@ -47,9 +47,18 @@
       border-radius: 10px;
     }
 
-    .homePortal {
+    h2 {
+      font-size: 2.5em;
+    }
+
+    .taster {
+      padding: 0 1em 0 1em;
+    }
+
+    .navPortal {
       display: grid;
       grid-template-areas: 
+        "tag tag tag tag"
         "what what what finder"
         "what what what finder"
         "culture guide guide finder"
@@ -57,7 +66,7 @@
       ;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(4, 200px);
-      padding: 5em 0.5em 0.5em 0.5em;
+      padding: 5em 1em 0 1em;
     }
 
     .card {
@@ -115,14 +124,14 @@
       transition: all 0.3s ease;
     }
 
-    .card h2 {
+    .card h3 {
       position: absolute;
       z-index: 2;
       opacity: 1;
       transition: opacity 0.4s ease, transform 0.4s ease;
       text-align: center;
       bottom: 0;
-      font-size: 2.5em;
+      font-size: 2em;
     }
 
     .card:hover::before {
@@ -133,7 +142,7 @@
       opacity: 1;
     }
 
-    .card:hover h2 {
+    .card:hover h3 {
       opacity: 0;
       transform: translateY(-10px);
       pointer-events: none;
@@ -144,12 +153,17 @@
       transform: translateY(0);
     }
 
+    .navPortal h2 {
+      grid-area: tag;
+      text-align: center;
+    }
+
     .what-is {
       background-image: url(images/festival-crowd.jpg);
       grid-area: what;
     }
 
-    .what-is h2 {
+    .what-is h3 {
       left: 20px;
     }
 
@@ -163,7 +177,7 @@
       grid-area: guide;
     }
 
-    .guide h2 {
+    .guide h3 {
       left: 20px;
     }
 
@@ -201,10 +215,30 @@
       </div>
       <div id="content"></div>
     </section>
-    <section class="homePortal">
-
+    <section class="taster">
+      <div class="hook">
+        <h2>A Genre Like No Other</h2>
+        <p>Electronic Dance Music, or EDM, is a genre defined by its contsant innovation, creativity, and artistry. From pulsating beats to ambient atmoshpere building, EDM pushes the boundaries of traditional music and redefines how music is produced and experienced.</p>
+        <aside>Quote from DJ about EDM</aside>
+      </div>
+      <div>
+        <h3>Artists That Define the Sound</h3>
+        <div class="icons">
+          Skrillex, Avicii, David Guetta, Calvin Harris, Tiesto, Swedish House Mafia, Armin van Buuren
+        </div>
+      </div>
+      <div class="atmosphere">
+        <h3>Not Just Music but a Home</h3>
+        <p>EDM is more than beats produced on a screen; its a global movement that draws together millions through its rhythm and energy. Its global appeal provides a space where personal expression can grow into a connecting force, creating community anywhere you go.</p>
+        <div class="image-carousel">
+          Images of festivals, concert-goers, etc.
+        </div>
+      </div>
+    </section>
+    <section class="navPortal">
+      <h2>Want to Learn More?</h2>
       <div class="card what-is">    
-        <h2>What is EDM?</h2>
+        <h3>What is EDM?</h3>
         <div class="cardContent">
         <p>Electronic Dance Music, or EDM, is the umbrella term for electronic music genres originally made for nightclubs, raves, and festivals.</p>
         <p>Among the melodic and euphoric sounds of house music, the dark and grimy beats of dubstep, or fast tempos and playful sounds of happy hardcore there are so many genres to dive into.</p>
@@ -213,7 +247,7 @@
       </div>
       
       <div class="card culture">
-        <h2>Culture That Connects</h2>
+        <h3>Culture That Connects</h3>
         <div class="cardContent">
         <p>EDM is a global culture powered by sound, movement, and connection. From underground clubs to massive festival stages, EDM unites people from all walks of life through an immersive experience shaped by inclusivity and shared passion.</p>
         <a href="edm-culture.html">Learn More</a>
@@ -221,7 +255,7 @@
         
       </div>
       <div class="card guide">
-        <h2>Concert Guide</h2>
+        <h3>Concert Guide</h3>
         <div class="cardContent">
         <p>Learn how to make the most of your time at an event, and ensure that you have everything you need to enjoy your time in the scene.</p>
         <a href="concert-guide.html">Get Prepared</a>
@@ -229,7 +263,7 @@
       </div>
   
       <div class="card event-finder">
-        <h2>Find a Festival</h2>
+        <h3>Find a Festival</h3>
         <div class="cardContent">
           <p>Now that you've learned the basics, its time to join the crowds and groove to the beats.</p>
           <a href="festival-finder.html">Plan Your Next Concert</a>
