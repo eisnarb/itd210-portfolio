@@ -52,7 +52,7 @@
     }
 
     .taster {
-      padding: 0 1em 0 1em;
+      padding: 4em 1em 0 1em;
     }
 
     .navPortal {
@@ -186,6 +186,17 @@
       grid-area: finder;
     }
 
+    .scroll-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .scroll-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   </style>
 </head>
 <body>
@@ -216,28 +227,28 @@
       <div id="content"></div>
     </section>
     <section class="taster">
-      <div class="hook">
+      <div class="hook scroll-in">
         <h2>A Genre Like No Other</h2>
         <p>Electronic Dance Music, or EDM, is a genre defined by its contsant innovation, creativity, and artistry. From pulsating beats to ambient atmoshpere building, EDM pushes the boundaries of traditional music and redefines how music is produced and experienced.</p>
         <aside>Quote from DJ about EDM</aside>
       </div>
-      <div>
+      <div class="scroll-in">
         <h3>Artists That Define the Sound</h3>
         <div class="icons">
           Skrillex, Avicii, David Guetta, Calvin Harris, Tiesto, Swedish House Mafia, Armin van Buuren
         </div>
       </div>
-      <div class="atmosphere">
+      <div class="atmosphere scroll-in">
         <h3>Not Just Music but a Home</h3>
         <p>EDM is more than beats produced on a screen; its a global movement that draws together millions through its rhythm and energy. Its global appeal provides a space where personal expression can grow into a connecting force, creating community anywhere you go.</p>
-        <div class="image-carousel">
+        <div class="image-carousel scroll-in">
           Images of festivals, concert-goers, etc.
         </div>
       </div>
     </section>
     <section class="navPortal">
-      <h2>Want to Learn More?</h2>
-      <div class="card what-is">    
+      <h2 class="scroll-in">Want to Learn More?</h2>
+      <div class="card what-is scroll-in">    
         <h3>What is EDM?</h3>
         <div class="cardContent">
         <p>Electronic Dance Music, or EDM, is the umbrella term for electronic music genres originally made for nightclubs, raves, and festivals.</p>
@@ -246,7 +257,7 @@
         </div>
       </div>
       
-      <div class="card culture">
+      <div class="card culture scroll-in">
         <h3>Culture That Connects</h3>
         <div class="cardContent">
         <p>EDM is a global culture powered by sound, movement, and connection. From underground clubs to massive festival stages, EDM unites people from all walks of life through an immersive experience shaped by inclusivity and shared passion.</p>
@@ -254,7 +265,7 @@
         </div>
         
       </div>
-      <div class="card guide">
+      <div class="card guide scroll-in">
         <h3>Concert Guide</h3>
         <div class="cardContent">
         <p>Learn how to make the most of your time at an event, and ensure that you have everything you need to enjoy your time in the scene.</p>
@@ -262,7 +273,7 @@
         </div>
       </div>
   
-      <div class="card event-finder">
+      <div class="card event-finder scroll-in">
         <h3>Find a Festival</h3>
         <div class="cardContent">
           <p>Now that you've learned the basics, its time to join the crowds and groove to the beats.</p>
@@ -274,5 +285,17 @@
   </main>
   <footer><p>&copy; 2026</p> <p>Josh Bransford</p> <p>NVCC ITD-210</p></footer>
   <script src="js/script.js"></script>
+  <script>
+    const observer = new IntersectionObserver ((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      }); 
+    }, {threshold: 0.1});
+
+    document.querySelectorAll('.scroll-in').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
