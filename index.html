@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <title>Entranced by Dance - A Beginner's Guide to EDM</title>
   <style>
     .hero {
@@ -31,13 +34,17 @@
       z-index: 2;
       height: 100%;
       color: var(--smoke);
-      font-size: 2rem;
+      font-size: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       animation: load-in 3s ease-out forwards;
+    }
+
+    .heroContent h1 {
+      font-size: 3em;
     }
 
     .heroContent a {
@@ -53,13 +60,155 @@
     }
 
     h2 {
-      font-size: 2.5em;
+      font-size: 3em;
     }
 
     .taster {
       padding: 4em 1em 0 1em;
     }
 
+    .taster h3 {
+      font-size: 3rem;
+    }
+
+    .hook {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hook h2 {
+      text-align: center;
+    }
+
+    .pull-quote {
+      font-size: 3.5em;
+      text-align: center;
+    }
+
+    .pull-quote figcaption {
+      font-size: 16px;
+    }
+
+    hr {
+      max-width: 500px;
+    }
+
+    /*Desktop*/
+
+    .artist-tease {
+      max-width: 1200px;
+      margin-right: auto;
+    }
+
+    .icon-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 100%;
+      gap: 20px;
+      padding: 20px 0 20px 0;
+    }
+
+    .icon-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .icon {
+      width: 100px;
+      height: 100px;
+      border: 3px solid var(--glaucous);
+      border-radius: 50%;
+      object-fit: cover;
+      transform: translateY(0);
+      transition: transform 0.3s ease, margin 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .icon img {
+      width: 100%;
+      height: auto;
+    }
+
+    .filter {
+      filter: brightness(0.8);
+    }
+
+    .caption {
+      position: absolute;
+      top: 100%;
+      margin-top: -20px;
+      text-align: center;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .icon-wrapper:hover .icon {
+      transform: translateY(-20px);
+      margin: 0 30px 0 30px;
+      border: 3px solid #455985;
+    }
+
+    .icon-wrapper:hover .caption {
+      opacity: 1;
+    }
+
+    .atmosphere {
+      max-width: 1200px;
+      margin-left: auto;
+    }
+
+    .atmosphere h3 {
+      text-align: right;
+    }
+
+    /*Mobile*/
+    .gallery{
+      display: flex;
+      flex: row wrap;
+    }
+
+    /*Desktop*/
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-auto-rows: 500px;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .gallery-img {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .span5 {
+      grid-column: span 5;
+    }
+
+    .span4 {
+      grid-column: span 4;
+    }
+
+    .span3 {
+      grid-column: span 3;
+    }
+
+    /*Mobile*/
+    .navPortal {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /*Desktop*/
     .navPortal {
       display: grid;
       grid-template-areas: 
@@ -73,6 +222,8 @@
       grid-template-rows: repeat(4, 200px);
       padding: 5em 1em 0 1em;
     }
+
+    
 
     .card {
       background-size: cover;
@@ -136,7 +287,7 @@
       transition: opacity 0.4s ease, transform 0.4s ease;
       text-align: center;
       bottom: 0;
-      font-size: 2em;
+      font-size: 2.5em;
     }
 
     .card:hover::before {
@@ -164,7 +315,7 @@
     }
 
     .what-is {
-      background-image: url(images/festival-crowd.jpg);
+      background-image: url(images/festivals/festival-crowd.jpg);
       grid-area: what;
     }
 
@@ -187,7 +338,7 @@
     }
 
     .event-finder {
-      background-image: url(images/ultra-music.jpg);
+      background-image: url(images/festivals/ultra-music.jpg);
       grid-area: finder;
     }
 
@@ -235,19 +386,81 @@
       <div class="hook scroll-in">
         <h2>A Genre Like No Other</h2>
         <p>Electronic Dance Music, or EDM, is a genre defined by its contsant innovation, creativity, and artistry. From pulsating beats to ambient atmoshpere building, EDM pushes the boundaries of traditional music and redefines how music is produced and experienced.</p>
-        <aside>Quote from DJ about EDM</aside>
+        <aside class="pull-quote">
+          <figure>
+            <img src="images/festivals/AvB-crowd.jpg" alt="DJ in front of a crowd.">
+            <figcaption>Armin van Buuren performs at Untold Festival 2018</figcaption>
+          </figure>
+          
+          <p>Life is a journey, and let the beat guide you through it</p>
+          <hr>
+          <h3>Armin van Buuren</h3>
+        </aside>
       </div>
       <div class="scroll-in">
-        <h3>Artists That Define the Sound</h3>
-        <div class="icons">
-          Skrillex, Avicii, David Guetta, Calvin Harris, Tiesto, Swedish House Mafia, Armin van Buuren
+
+        <div class="artist-tease">
+          <h3>Artists That Define the Sound</h3>
+          <p>EDM features some of the biggest names in the music industry, and many that you probably would recognize. Here's a few of the biggest DJs whose music helped push electronic music to its current heights.</p>
+        </div>
+
+        <div class="icon-row">
+
+          <div class="icon-wrapper">
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO0sabi8" target="_blank"><img class="icon" src="images/artists/armin.jpg"></a>
+            <p class="caption">Armin van Buuren</p>
+          </div>
+          
+          <div class="icon-wrapper">
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO0PRpBu" target="_blank"><img class="icon" src="images/artists/avicii.jpg"></a>
+            <p class="caption">Avicii</p>
+          </div>
+
+          <div class="icon-wrapper">
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO4vD8f6" target="_blank"><img class="icon" src="images/artists/calvin-harris.jpg"></a>
+            <p class="caption">Calvin Harris</p>
+          </div>
+
+          <div class="icon-wrapper">
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO0TXLQk" target="_blank"><img class="icon" src="images/artists/david-guetta.jpg"></a>
+            <p class="caption">David Guetta</p>
+          </div>
+
+          <div class="icon-wrapper">
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO36pSwM" target="_blank"><img class="icon" src="images/artists/skrillex.jpg"></a>
+            <p class="caption">Skrillex</p>
+          </div>
+
+          <div class="icon-wrapper">
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO0H7Hk1" target="_blank"><img class="icon" src="images/artists/shm.jpg"></a>
+            <p class="caption">Swedish House Mafia</p>
+          </div>
+
+          <div class="icon-wrapper">
+            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO1mCYVO" target="_blank"><img class="icon filter" src="images/artists/tiesto.jpg"></a>
+            <p class="caption">Tiësto</p>
+          </div>
+          
         </div>
       </div>
-      <div class="atmosphere scroll-in">
-        <h3>Not Just Music but a Home</h3>
-        <p>EDM is more than beats produced on a screen; its a global movement that draws together millions through its rhythm and energy. Its global appeal provides a space where personal expression can grow into a connecting force, creating community anywhere you go.</p>
-        <div class="image-carousel scroll-in">
-          Images of festivals, concert-goers, etc.
+      <div class="scroll-in">
+        <div class="atmosphere">
+          <h3>Not Just Music but a Home</h3>
+          <p>EDM is more than beats produced on a screen; its a global movement that draws together millions through its rhythm and energy. Its global appeal provides a space where personal expression can grow into a connecting force, creating community anywhere you go.</p>
+        </div>
+        <div class="gallery">
+          <div class="gallery-img scroll-in span5">
+            <img src="images/festivals/edc-orlando.jpg">
+          </div>
+          <div class="gallery-img scroll-in span3">
+            <img src="images/festivals/edc-orlando.jpg">
+          </div>
+          <div class="gallery-img scroll-in span4">
+            <img src="images/festivals/edc-orlando.jpg">
+          </div>
+          <div class="gallery-img scroll-in span4">
+            <img src="images/festivals/edc-orlando.jpg">
+          </div>
         </div>
       </div>
     </section>
