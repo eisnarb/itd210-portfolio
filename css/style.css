@@ -1,14 +1,4 @@
 /*Fonts & Common Styles*/
-@font-face {
-  font-family: 'Rumutocu';
-  src: url('/fonts/rumutocu/Rumutocu-nMpg.ttf');
-}
-
-@font-face {
-  font-family: 'Clubbed';
-  src: url('/fonts/clubbedToLife/ClubbedToLife-aemJ.ttf');
-}
-
 :root {
   --iron: #444545;
   --smoke: #F6F4F4;
@@ -22,16 +12,16 @@ html {
 }
 
 body {
-  font-family: 'Clubbed', Arial, Helvetica, sans-serif;
+  font-family: "Orbitron", Arial, Helvetica, sans-serif;
   background-color: var(--onyx);
   color: var(--smoke);
   margin: 0;
   padding: 0;
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 h1, h2, h3 {
-  font-family: 'Rumutocu', Arial, Helvetica, sans-serif;
+  font-family: "Audiowide", Arial, Helvetica, sans-serif;
 }
 
 a {
@@ -48,8 +38,7 @@ a {
 .navLinks a {
   text-decoration: none;
   padding: 25px;
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 18px;
   color: var(--smoke);
   margin: 0 5px 0 5px;
 }

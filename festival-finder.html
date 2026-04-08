@@ -3,11 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Festival Finder - A Beginner's Guide to EDM</title>
+  <title>Event Finder - A Beginner's Guide to EDM</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      padding-top: var(--navHeight);
+      padding: var(--navHeight) 0.5em 0 0.5em; 
     }
 
     /*Set grid for the page*/
@@ -160,7 +163,7 @@
   </header>
   <main>
     <div id="intro">
-      <h1>Festival Finder</h1>
+      <h1>Event Finder</h1>
       <p>Now that you've learned the ropes it's time to go a show!</p>
       <hr>
       <input type="text" placeholder="Name of Event/Artist/Location" id="eventInput"><button id="searchEvent">search</button>
@@ -177,9 +180,9 @@
       You haven't searched for anything yet!
     </div>
     <div id="searchPages">
-      <button id="prev" disabled><img src="images/previous.svg" width="25px"></button>
+      <button id="prev" disabled><img src="images/icons/previous.svg" width="25px"></button>
       <span id="pageNumber"></span>
-      <button id="next"><img src="images/next.svg" width="25px"></button>
+      <button id="next"><img src="images/icons/next.svg" width="25px"></button>
     </div>
   </main>
   <footer><p>&copy; 2026</p> <p>Josh Bransford</p> <p>NVCC ITD-210</p></footer>
