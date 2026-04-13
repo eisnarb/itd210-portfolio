@@ -51,7 +51,7 @@
     <section class="md:grid grid-cols-2 gap-1">
       <div class="flex flex-col items-center justify-center">
         <h1 class="text-4xl md:text-5xl lg:text-6xl mb-6">Welcome to the World of EDM</h1>
-        <p class="p-2">Electronic Dance Music is an expansive genre with a rich history and a bright, rapidly growing future. Before jumping into the deep end of the festival scene, learn about the roots of the sounds and the many different subgenres that exist in the scene.</p>
+        <p class="p-2">Electronic Dance Music is an expansive genre with a rich history and a bright, rapidly growing future. Before jumping into the deep end of the festival scene, learn about the roots of the sounds and some of the many different subgenres that exist in the scene.</p>
         <a href="#content" class="py-2 px-4 bg-nova-blue rounded-full hover:bg-nova-hovblue active:scale-95 transition-all duration-300 cursor-pointer">Explore the Genre</a>
       </div>
       <img src="images/festivals/crowd-surf.jpg" class="max-w-full rounded-sm mt-4">
@@ -75,22 +75,16 @@
         <button id="next"><img src="images/icons/next.svg" class="max-w-[30px] md:max-w-[50px]"></button>
       </div>
     </section>
-    <section id="genre">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl">Subgenre Explorer</h2>
-    </section>
-    <section id="up-next">
-
-    </section>
   </main>
   <footer></footer>  
   <script src="js/script.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const events = [
-      { year: "1960s and Early 70s", title: "EDM Precursors and Early Pioneers", desc: "The roots of EDM trace back to the 1960s, largely influenced by The Beatles who were at the forefront of electronic instrumentation and experimentation in their music. This experimenting fed into the New Wave genre during the early 70s, during which a German group Kraftwerk became foundational electronic music pioneers. Their 1974 album Autobahn was fully designed around repetitive electronic sounds using drum machines, sequencers, and other electronic instruments helping establish electronic music as its own genre.", img: "images/artists/kraftwerk.jpg" },
-      { year: "1970s", title: "Disco and Hip Hop Push Electronic Experimentation", desc: "Hip Hop emerged in 1970s New York where artists and DJs, like DJ Kool Herc, began experimenting with drum machines and synthesizers, pioneering common modern-day DJ techniques. Simultaneously, Disco was on the rise across the US East Coast. Artists like George McCrae and Donna Summer and their teams used the new electronic music technology, created by companies like Roland, to produce songs described as \"the start of electronic dance music.\"", img: "images/artists/kool-herc.jpeg" },
+      { year: "1960s and Early 70s", title: "EDM Precursors and Early Pioneers", desc: "The roots of EDM trace back to the 1960s, largely influenced by The Beatles who were at the forefront of electronic instrumentation and experimentation in their music. This experimenting fed into the New Wave genre during the early 70s, during which a German group Kraftwerk became foundational electronic music pioneers. Their 1974 album Autobahn was fully produced around repetitive electronic sounds using drum machines, sequencers, and other electronic instruments helping establish electronic music as its own genre.", img: "images/artists/kraftwerk.jpg" },
+      { year: "1970s", title: "Disco and Hip Hop Push Electronic Experimentation", desc: "Hip Hop emerged in 1970s New York where artists and DJs, like DJ Kool Herc, began experimenting with drum machines and synthesizers, and pioneering common modern-day DJ techniques. Simultaneously, Disco was on the rise across the US East Coast. Artists like George McCrae and Donna Summer and their teams used the new electronic music technology, created by companies like Roland, to produce songs described as \"the start of electronic dance music.\"", img: "images/artists/kool-herc.jpeg" },
       { year: "Late 1970s and 80s", title: "Post-Disco and the Rise of House and Techno", desc: "As the 1970s came to a close so did disco's popularity. After an incident now known as \"Disco Demolition Night\" music labels began to abandon the disco genre altogether. However artists like DJ Larry Levan and Frankie Knuckles took the sound to the underground where they would mix disco with many other genres like funk, rock, rap, and synthpop, creating what's known as \"House\" music. During the 80s other electronic music genres began to emerge across the globe: Electro emerged, blending hip hop and synthpop; Acid House began to spread across Europe; and Detroit Techno began to gather ground in the US.", img: "images/artists/larry-levan.png"},
-      { year: "1990s", title: "Contemporary Beginnings of Dance Music", desc: "The first sounds that most modern day fans would recognize as EDM started to emerge in the 90s. Genres like Trance, UK Rave, Hardstyle, Drum and Bass among others were sweeping across Europe and becoming popular. Fans of the music would gather in night clubs, abandonded warehouses, and other unpermitted gathering spaces to party and enjoy the music.", img: "images/festivals/90s-rave.jpg" },
+      { year: "1990s", title: "Contemporary Beginnings of Dance Music", desc: "The first sounds that most modern day fans would recognize as EDM started to emerge in the 90s. Genres like Trance, UK Rave, Hardstyle, Drum and Bass among others were sweeping across European and US underground scenes, becoming highly popular. Fans of the music would gather in night clubs, abandonded warehouses, and other unpermitted gathering spaces to party and enjoy the music.", img: "images/festivals/90s-rave.jpg" },
       { year: "1990s", title: "Government Crackdowns on Raves and Dance Music", desc: "At the same time as its meteoric rise, EDM and rave culture faced scrutiny and legal battles throughout the 90s. Sensationalism and moral panic over the use of drugs and other illicit activity culminated in 1994 when the UK government passed the Criminal Justice and Public Order Act which sought to restrict the growing rave culture in the country, though it saw massive backlash from the public in London's \"Kill the Bill\" protests. The US followed similarly in suit, passing the Reducing Americans' Vulnerability to Ecstasy, or \"RAVE\", Act in the late 90s. Beyond that many cities imposed curfews, noise ordinances, and even special permit requirements in order to clamp down on growing rave scenes.", img: "images/festivals/kill-the-bill.png"},
       { year: "2000s and Early 10s", title: "EDM's Rebirth and Mainstream Push", desc: "During the 2000s artists like Benny Benassi, Eric Prydz, and Daft Punk were making electronic music that was beloved by global audiences, helping bring EDM back into the cultural zeitgeist.   In the late 2000s a French music duo, Justice, brought electronic music popularity back to the US with their rock-influenced sound. This rebrand of EDM repackaged the electronic sounds that were once opposed into popular and familiar music genres and pushed electronic music into the mainstream. Artists like Skrillex, Swedish House Mafia, Calvin Harris, and others defined popular music in the 2010s and helped solidify EDM as a cultural mainstay.", img: "images/artists/daft-punk.jpg"},
       { year: "2010s and Beyond", title: "The Current Era", desc: "As electronic music has grown in popularity, its experimentation has never stopped. As the 2010s carried into the 2020s, new subgenres and artists have emerged and reshaped dance music into its modern form. New styles like future bass, trap, melodic dubstep, and future house have brought on the current era of festival music sounds; being pushed forward by artists like Illenium, Zedd, Subtronics, Martin Garrix, and many others. What were exclusively underground dance sounds are now even seeping into pop genres with artists like Charli XCX, Pink Panthress, Tiffany Day, Icona Pop, and others that blur what used to be distinct lines between traditional radio pop and EDM sounds.", img: "images/artists/zedd.jpg" }
@@ -101,9 +95,7 @@
       function render() {
         const e = events[current];
         const card = document.getElementById('timelineCard');
-        card.classList.remove('fade');
         void card.offsetWidth;
-        card.classList.add('fade');
         card.style.backgroundImage = `url(${e.img})`;
         document.getElementById('year').textContent = e.year;
         document.getElementById('title').textContent = e.title;
