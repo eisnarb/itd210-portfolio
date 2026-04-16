@@ -218,7 +218,6 @@
       const keyword = document.querySelector("input").value;
       container.textContent = "Loading search..."
 
-      fetch("https://app.ticketmaster.com/discovery/v2/events.json?countryCode=US&segmentName=Music&genreId=KnvZfZ7vAvF&keyword=" + keyword + "&size=" + pageSize + "&page=" + page + "&apikey=HN4bQHwCtNITu9RVhzQ5qmlAXd9YGez4")
 
       .then(function(response) {
         return response.json();
