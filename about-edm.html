@@ -1,16 +1,25 @@
+<!--Storytelling page-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: {
+            audiowide: ['"Audiowide"', 'sans-serif'],
+            exo: ['"Exo 2"', 'sans-serif'],
+            orbitron: ['"Orbitron"', 'sans-serif'],
+          },
           colors: {
         // Now use bg-nova, text-nova everywhere — no hex codes!
-          nova:   { onyx: '#0a0a0a', iron: '#444545', smoke: '#f6f4f4', blue: '#6987c9', hovblue: '#455985'},
+          nova:   { onyx: '#0a0a0a', iron: '#9c9c9c', smoke: '#f6f4f4', blue: '#6987c9', hovblue: '#455985'},
           brand:  '#0a0a0a',
           }
         }
@@ -22,50 +31,50 @@
   <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-nova-onyx text-nova-smoke m-0 p-0 text-lg">
+<body class="font-exo bg-nova-onyx text-nova-smoke m-0 p-0 text-lg">
   <!--Mobile navigation styled with the help of Claude AI-->
   <header>
     <!--Mobile navigation-->
     <nav class="sticky top-0 z-50 bg-nova-iron py-2 md:py-4">
       <button id="menu" onclick="toggleMenu()" class="flex flex-col gap-1 p2 cursor-pointer md:hidden">
-        <span class="w-6 h-1 bg-nova-smoke rounded-sm"></span>
-        <span class="w-6 h-1 bg-nova-smoke rounded-sm"></span>
-        <span class="w-6 h-1 bg-nova-smoke rounded-sm"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
       </button>
-      <div id="navLinks" class="fixed top-5.5 left-0 bg-nova-iron flex-col w-[200px] overflow-hidden opacity-0 -translate-y-2.5 transition-all duration-300 ease-in-out z-[50] rounded-sm max-h-0">
+      <div id="navLinks" class="fixed top-5.5 left-0 font-orbitron bg-nova-iron text-nova-onyx flex-col w-[200px] overflow-hidden opacity-0 -translate-y-2.5 transition-all duration-300 ease-in-out z-[50] rounded-sm max-h-0">
         <a href="index.html" class="px-4 py-2 block">Home</a>
         <a href="edm-culture.html" class="px-4 py-2 block">EDM Culture</a>
         <a href="concert-guide.html" class="px-4 py-2 block">Concert Guide</a>
         <a href="festival-finder.html" class="px-4 py-2 block">Festival Finder</a>
       </div>
       <!--Desktop navigation-->
-      <ul class="hidden md:flex gap-6">
-        <li><a href="index.html" class="p-4">Home</a></li>
-        <li><a href="edm-culture.html" class="p-4">EDM Culture</a></li>
-        <li><a href="concert-guide.html" class="p-4">Concert Guide</a></li>
-        <li><a href="festival-finder.html" class="p-4">Festival Finder</a></li>
+      <ul class="hidden md:flex gap-6 font-orbitron text-nova-onyx">
+        <li><a href="index.html" class="pl-4">Home</a></li>
+        <li><a href="edm-culture.html" class="p-2">EDM Culture</a></li>
+        <li><a href="concert-guide.html" class="p-2">Concert Guide</a></li>
+        <li><a href="festival-finder.html" class="p-2">Festival Finder</a></li>
       </ul>
     </nav>
   </header>
   <main class="flex flex-col text-center items-center gap-5 max-w-full min-w-0 p-4 mt-2 text-xl">
     <section class="md:grid grid-cols-2 gap-1">
       <div class="flex flex-col items-center justify-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl mb-6">Welcome to the World of EDM</h1>
+        <h1 class="font-audiowide text-4xl md:text-5xl lg:text-6xl mb-6">Welcome to the World of EDM</h1>
         <p class="p-2">Electronic Dance Music is an expansive genre with a rich history and a bright, rapidly growing future. Before jumping into the deep end of the festival scene, learn about the roots of the sounds and some of the many different subgenres that exist in the scene.</p>
         <a href="#content" class="py-2 px-4 bg-nova-blue rounded-full hover:bg-nova-hovblue active:scale-95 transition-all duration-300 cursor-pointer">Explore the Genre</a>
       </div>
       <img src="images/festivals/crowd-surf.jpg" class="max-w-full rounded-sm mt-4">
     </section>
     <section id="content">
-      <h2 class="text-3xl mb-4 md:text-4xl lg:text-5xl">The History of EDM</h2>
+      <h2 class="font-audiowide text-3xl mb-4 md:text-4xl lg:text-5xl">The History of EDM</h2>
       <div id="timelineCard" class="relative w-full max-w-5xl min-h-[500px] rounded-2xl bg-cover bg-center overflow-hidden mb-2">
 
         <div class="absolute inset-0 bg-black/70 rounded-2xl"></div>
 
         <div class="relative z-10 flex flex-col justify-end h-full min-h-[500px] p-6 gap-2">
-          <p id="year" class="text-sm font-medium text-nova-smoke tracking-widest"></p>
-          <p id="title" class="text-xl md:text-2xl font-semibold text-nova-smoke"></p>
-          <p id="description" class="text-sm md:text-base text-nova-smoke leading-relaxed"></p>
+          <p id="year" class="text-sm font-exo text-nova-smoke tracking-widest"></p>
+          <p id="title" class="text-xl md:text-2xl font-exo text-nova-smoke"></p>
+          <p id="description" class="font-exo text-sm md:text-base text-nova-smoke leading-relaxed"></p>
         </div>
         
       </div>
