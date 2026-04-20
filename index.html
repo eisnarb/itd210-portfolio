@@ -7,6 +7,25 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            audiowide: ['"Audiowide"', 'sans-serif'],
+            exo: ['"Exo 2"', 'sans-serif'],
+            orbitron: ['"Orbitron"', 'sans-serif'],
+          },
+          colors: {
+        // Now use bg-nova, text-nova everywhere — no hex codes!
+          nova:   { onyx: '#0a0a0a', iron: '#9c9c9c', smoke: '#f6f4f4', blue: '#6987c9', hovblue: '#455985'},
+          brand:  '#0a0a0a',
+          }
+        }
+      }
+    }
+  </script>
   <title>Entranced by Dance - A Beginner's Guide to EDM</title>
   <style>
     .hero {
@@ -64,7 +83,7 @@
     }
 
     .taster {
-      padding: 4em 1em 0 1em;
+      padding: 18px 0 26px;
     }
 
     .taster h3 {
@@ -72,30 +91,108 @@
     }
 
     .hook {
-      max-width: 1200px;
-      margin: 0 auto;
+      position: relative;
+      min-height: 90vh;
+      overflow: hidden;
+      border-radius: 0 0 44px 44px;
     }
 
-    .hook h2 {
-      text-align: center;
+    .hook-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
 
-    figure img {
-      max-width: 100%;
-      min-width: 400px;
+    .hook-slide.active {
+      opacity: 1;
+      z-index: 1;
     }
+
+    .hook-slide img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hook-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.4) 0%, rgba(10, 10, 10, 0.8) 100%);
+    }
+
+    .hook-content {
+      position: absolute;
+      inset: auto 0 54px 0;
+      z-index: 2;
+      color: var(--smoke);
+    }
+
+    .hook-content h2 {
+      margin: 0;
+      max-width: 10.5ch;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.07em;
+    }
+
+    .hook-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .hook-actions a {
+      background-color: var(--glaucous);
+      color: var(--smoke);
+      transition: all 0.3s ease;
+    }
+
+    .hook-actions a:hover {
+      background-color: #455985;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .slider-dots {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--iron);
+    }
+
+    .dot.active {
+      background: var(--smoke);
+    }
+
     .pull-quote {
-      font-size: 3.5em;
+      font-size: 2.75em;
       text-align: center;
     }
 
     .pull-quote figcaption {
       font-size: 16px;
       color: var(--iron);
-    }
-
-    hr {
-      max-width: 500px;
     }
 
 
@@ -214,7 +311,7 @@
     }
 
     .what-is {
-      background-image: url(images/festivals/festival-crowd.jpg);
+      background-image: url(images/unsplash/tijs-van-leur-Qnlp3FCO2vc-unsplash.jpg);
       grid-area: what;
     }
 
@@ -278,17 +375,28 @@
 </head>
 <body>
   <header>
-    <nav>
-      <div class="mobileNav">
-        <span></span><span></span><span></span>
+    <!--Mobile navigation-->
+    <nav class="sticky top-0 z-50 bg-nova-iron py-2 md:py-4">
+      <button id="menu" onclick="toggleMenu()" class="flex flex-col gap-1 p2 cursor-pointer md:hidden">
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+      </button>
+      <div id="navLinks" class="fixed top-5.5 left-0 font-orbitron bg-nova-iron text-nova-onyx flex-col w-[200px] overflow-hidden opacity-0 -translate-y-2.5 transition-all duration-300 ease-in-out z-[50] rounded-sm max-h-0">
+        <a href="about-edm.html" class="px-4 py-2 block">History</a>
+        <a href="model.html" class="px-4 py-2 block">The Synthesizer</a>
+        <a href="sample.html" class="px-4 py-2 block">Sampling</a>
+        <a href="gallery.html" class="px-4 py-2 block">Gallery</a>
+        <a href="festival-finder.html" class="px-4 py-2 block">Guide</a>
       </div>
-      <div class="navLinks">
-        <a href="about-edm.html">History</a>
-        <a href="model.html">The Synthesizer</a>
-        <a href="sample.html">Sampling</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="festival-finder.html">Guide</a>
-      </div>
+      <!--Desktop navigation-->
+      <ul class="hidden md:flex gap-6 font-orbitron text-nova-onyx">
+        <li><a href="about-edm.html" class="pl-4">History</a></li>
+        <li><a href="model.html" class="p-2">The Synthesizer</a></li>
+        <li><a href="sample.html" class="p-2">Sampling</a></li>
+        <li><a href="gallery.html" class="p-2">Gallery</a></li>
+        <li><a href="festival-finder.html" class="p-2">Festival Finder</a></li>
+      </ul>
     </nav>
   </header>
   <main>
@@ -304,31 +412,52 @@
       </div>
       <div id="content"></div>
     </section>
+    <!--Slideshow code based on example code provided by Dr. Juls Gilliam-->
     <section class="taster">
-      <div class="hook scroll-in">
-        <h2>A Genre Like No Other</h2>
-        <p>Electronic Dance Music, or EDM, is a genre defined by its contsant innovation, creativity, and artistry. From pulsating beats to ambient atmoshpere building, EDM pushes the boundaries of traditional music and redefines how music is produced and experienced.</p>
-      </div>
+      <div class="hook scroll-in" aria-label="Audience hook slideshow">
+        <article class="hook-slide active">
+          <img src="images/unsplash/nick-kane-NMx_9N2QC5o-unsplash.jpg" alt="multi-colored stage light display">
+          <div class="hook-overlay"></div>
+          <div class="hook-content shell">
+            <h2>A Genre Like No Other</h2>
+            <p>Electronic Dance Music, or EDM, is a genre defined by its contsant innovation, creativity, and artistry. From pulsating beats to ambient atmoshpere building, EDM pushes the boundaries of traditional music and redefines how music is produced and experienced.</p>
+            <div class="hook-actions">
+              <a class="btn" href="about-edm.html">Explore the History</a>
+              <a class="btn" href="sample.html">Learn the Techniques</a>
+              <a class="btn" href="model.html">Discover the Technology</a>
+            </div>
+          </div>
+        </article>
 
-      <div class="scroll-in">
-        <div class="hook">
-          <h2>Not Just Music but a Home</h2>
-          <p>EDM is more than beats produced on a screen; its a global movement that draws together millions through its rhythm and energy. Its global appeal provides a space where personal expression can grow into a connecting force, creating community anywhere you go.</p>
+        <article class="hook-slide">
+          <img src="images/unsplash/christian-agbede-PRAEF6vwMzw-unsplash.jpg" alt="People enjoying music and taking pictures at a club">
+          <div class="hook-overlay"></div>
+          <div class="hook-content shell">
+            <h2>Not Just Music but a Home</h2>
+            <p>EDM is more than beats produced on a screen; its a global movement that draws together millions through its rhythm and energy. Its global appeal provides a space where personal expression can grow into a connecting force, creating community anywhere you go.</p>
+            <div class="hook-actions">
+              <a class="btn" href="gallery.html">View Gallery</a>
+              <a class="btn" href="festival-finder.html">Find Your Place</a>
+            </div>
+          </div>
+        </article>
+
+        <div class="slider-dots" aria-label="Slideshow controls">
+          <button class="dot active" aria-label="show slide 1"></button>
+          <button class="dot" aria-label="show slide 2"></button>
         </div>
+      
       </div>
-      <aside class="pull-quote">
-          <figure>
-            <img src="images/festivals/AvB-crowd.jpg" alt="DJ in front of a crowd.">
-            <figcaption>Armin van Buuren performs at Untold Festival 2018</figcaption>
-          </figure>
-          
+      </section>
+
+      
+      <aside class="pull-quote scroll-in">
           <p>Life is a journey, and let the beat guide you through it</p>
-          <hr>
           <h3>Armin van Buuren</h3>
-        </aside>
-    </section>
+      </aside>
+  
     <section class="navPortal">
-      <h2 class="scroll-in">Ready to Explore the Genre?</h2>
+      <h2 class="scroll-in text-6xl">Ready to Explore the Genre?</h2>
       <div class="card what-is scroll-in">    
         <h3>The History of EDM</h3>
         <div class="cardContent">
@@ -371,9 +500,15 @@
       
     </section>
   </main>
-  <footer><p>&copy; 2026</p> <p>Josh Bransford</p> <p>NVCC ITD-210</p></footer>
+  <footer>
+    <p>&copy; 2026</p> <p>Josh Bransford</p> <p>NVCC ITD-210</p>
+    <div class="footer-bot">
+      <p>Photos and videos obtained from various authors</p><a href="credits.html">Full photo credits here</a>
+    </div>
+  </footer>
   <script src="js/script.js"></script>
   <script>
+    //Scroll in animation
     const observer = new IntersectionObserver ((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -384,6 +519,28 @@
     }, {threshold: 0.1});
 
     document.querySelectorAll('.scroll-in').forEach(el => observer.observe(el));
+
+    //Hook Slideshow
+    //Code based on example code provided by Dr. Juls Gilliam
+    const slides = document.querySelectorAll('.hook-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      currentSlide = index;
+    }
+
+    if (slides.length && dots.length) {
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showSlide(index));
+      });
+      
+      setInterval(() => {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+      }, 20000);
+    }
   </script>
 </body>
 </html>
