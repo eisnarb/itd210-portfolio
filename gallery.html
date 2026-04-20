@@ -27,9 +27,6 @@
     }
   </script>
   <title>The Sights of EDM - A Beginner's Guide to EDM</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
     .gallery-item {
       cursor: pointer;
@@ -219,28 +216,34 @@
       </div>
     </div>
   </main>
-<script src="js/script.js"></script>
-<script>
-  //lightbox function created with the help of ChatGPT
-  function openLightbox(el) {
-    const img = el.querySelector('img');
-    const title = el.querySelector('.gallery-title').textContent;
-    const credit = el.querySelector('.gallery-credit');
-    const photographer = el.dataset.photographer;
-    const profile = el.dataset.profile;
-    const link = el.dataset.link;
+  <footer class="flex flex-wrap justify-evenly">
+    <p>&copy; 2026</p> <p>Josh Bransford</p> <p>NVCC ITD-210</p>
+    <div class="flex basis-full justify-center gap-5">
+      <p>Photos and videos obtained from various authors</p><a href="credits.html">Full photo credits here</a>
+    </div>
+  </footer>  
+  <script src="js/script.js"></script>
+  <script>
+    //lightbox function created with the help of ChatGPT
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      const title = el.querySelector('.gallery-title').textContent;
+      const credit = el.querySelector('.gallery-credit');
+      const photographer = el.dataset.photographer;
+      const profile = el.dataset.profile;
+      const link = el.dataset.link;
 
-    //grabs photo information to display in the lightbox
-    document.getElementById('lightbox-img').src = img.src;
-    document.getElementById('lightbox-title').textContent = title;
-    //Adds photographer credit from dataset into the caption when lightbox opens
-    document.getElementById('lightbox-cap').innerHTML = `Photo by <a href="${profile}" target="_blank" class="underline">${photographer}</a> on <a href="${link}" target="_blank" class="underline">Unsplash</a>`;
-    document.getElementById('lightbox').classList.add('open');
-  }
+      //grabs photo information to display in the lightbox
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-title').textContent = title;
+      //Adds photographer credit from dataset into the caption when lightbox opens
+      document.getElementById('lightbox-cap').innerHTML = `Photo by <a href="${profile}" target="_blank" class="underline">${photographer}</a> on <a href="${link}" target="_blank" class="underline">Unsplash</a>`;
+      document.getElementById('lightbox').classList.add('open');
+    }
 
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-  }
-</script>
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+  </script>
 </body>
 </html>
