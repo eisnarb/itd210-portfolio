@@ -12,3 +12,6 @@ what the genre is, the different subgenres, items and ways to prepare for a fest
 
 ## Course
 ITD 210 Web Development - Northern Virginia Community College
+
+## Milestone 3
+Gallery page added, major update to the landing page and its structure.
