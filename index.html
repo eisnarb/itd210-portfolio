@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <title>Entranced by Dance - A Beginner's Guide to EDM</title>
   <style>
     .hero {
@@ -80,6 +80,10 @@
       text-align: center;
     }
 
+    figure img {
+      max-width: 100%;
+      min-width: 400px;
+    }
     .pull-quote {
       font-size: 3.5em;
       text-align: center;
@@ -87,96 +91,18 @@
 
     .pull-quote figcaption {
       font-size: 16px;
+      color: var(--iron);
     }
 
     hr {
       max-width: 500px;
     }
 
-    /*Desktop*/
-
-    .artist-tease {
-      max-width: 1200px;
-      margin-right: auto;
-    }
-
-    .icon-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 100%;
-      gap: 20px;
-      padding: 20px 0 20px 0;
-    }
-
-    .icon-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .icon {
-      width: 100px;
-      height: 100px;
-      border: 3px solid var(--glaucous);
-      border-radius: 50%;
-      object-fit: cover;
-      transform: translateY(0);
-      transition: transform 0.3s ease, margin 0.3s ease;
-      flex-shrink: 0;
-    }
-
-    .icon img {
-      width: 100%;
-      height: auto;
-    }
-
-    .filter {
-      filter: brightness(0.8);
-    }
-
-    .caption {
-      position: absolute;
-      top: 100%;
-      margin-top: -20px;
-      text-align: center;
-      opacity: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-    }
-
-    .icon-wrapper:hover .icon {
-      transform: translateY(-20px);
-      margin: 0 30px 0 30px;
-      border: 3px solid #455985;
-    }
-
-    .icon-wrapper:hover .caption {
-      opacity: 1;
-    }
-
-    .atmosphere {
-      max-width: 1200px;
-      margin-left: auto;
-    }
-
-    .atmosphere h3 {
-      text-align: right;
-    }
 
     /*Mobile*/
     .gallery{
       display: flex;
-      flex: row wrap;
-    }
-
-    /*Desktop*/
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      grid-auto-rows: 500px;
-      gap: 15px;
-      width: 100%;
+      flex-direction: column;
     }
 
     .gallery-img {
@@ -190,40 +116,12 @@
       object-fit: cover;
     }
 
-    .span5 {
-      grid-column: span 5;
-    }
-
-    .span4 {
-      grid-column: span 4;
-    }
-
-    .span3 {
-      grid-column: span 3;
-    }
-
     /*Mobile*/
     .navPortal {
       display: flex;
       flex-direction: column;
+      padding: 4em 1em 0 1em;
     }
-
-    /*Desktop*/
-    .navPortal {
-      display: grid;
-      grid-template-areas: 
-        "tag tag tag tag"
-        "what what what finder"
-        "what what what finder"
-        "culture guide guide finder"
-        "culture guide guide finder"
-      ;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4, 200px);
-      padding: 5em 1em 0 1em;
-    }
-
-    
 
     .card {
       background-size: cover;
@@ -258,6 +156,7 @@
       z-index: 2;
       padding: 2.5vh;
       width: fit-content;
+      text-align: center;
       opacity: 0;
       transform: translateY(15px);
       transition: opacity 0.4s ease, transform 0.4s ease;
@@ -323,29 +222,34 @@
       left: 20px;
     }
 
-    .culture {
-      background-image: url(images/plurr-heart.jpg);
-      grid-area: culture;
+    .navGal {
+      background-image: url(images/unsplash/aditya-chinchure-ZhQCZjr9fHo-unsplash.jpg);
+      grid-area: gallery;
     }
 
-    .guide {
-      background-image: url(images/rave-fashion.jpg);
-      grid-area: guide;
+    .synth {
+      background-image: url(images/unsplash/benoit-roy-yrWiDFcNYE4-unsplash.jpg);
+      grid-area: synth;
     }
 
-    .guide h3 {
+    .synth h3 {
       left: 20px;
     }
 
-    .event-finder {
-      background-image: url(images/festivals/ultra-music.jpg);
-      grid-area: finder;
+    .sample {
+      background-image: url(images/unsplash/techivation-I4IgWUTOSGI-unsplash.jpg);
+      grid-area: sample;
+    }
+
+    .guide {
+      background-image: url(images/unsplash/juliette-f-mawOOCqXhrY-unsplash.jpg);
+      grid-area: guide;
     }
 
     .scroll-in {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition: opacity 1s ease-in, transform 1s ease;
     }
 
     .scroll-in.is-visible {
@@ -353,6 +257,23 @@
       transform: translateY(0);
     }
 
+    @media (min-width: 1024px) {
+      .navPortal {
+        display: grid;
+        grid-template-areas: 
+          "tag tag tag tag"
+          "what what what what"
+          "what what what what"
+          "sample synth synth gallery"
+          "sample synth synth gallery"
+          "guide guide guide guide"
+          "guide guide guide guide"
+        ;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(7, 200px);
+        padding: 5em 1em 0 1em;
+      }
+    }
   </style>
 </head>
 <body>
@@ -362,10 +283,11 @@
         <span></span><span></span><span></span>
       </div>
       <div class="navLinks">
-        <a href="about-edm.html">What is EDM?</a>
-        <a href="edm-culture.html">EDM Culture</a>
-        <a href="concert-guide.html">Concert Guide</a>
-        <a href="festival-finder.html">Festival Finder</a>
+        <a href="about-edm.html">History</a>
+        <a href="model.html">The Synthesizer</a>
+        <a href="sample.html">Sampling</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="festival-finder.html">Guide</a>
       </div>
     </nav>
   </header>
@@ -386,7 +308,15 @@
       <div class="hook scroll-in">
         <h2>A Genre Like No Other</h2>
         <p>Electronic Dance Music, or EDM, is a genre defined by its contsant innovation, creativity, and artistry. From pulsating beats to ambient atmoshpere building, EDM pushes the boundaries of traditional music and redefines how music is produced and experienced.</p>
-        <aside class="pull-quote">
+      </div>
+
+      <div class="scroll-in">
+        <div class="hook">
+          <h2>Not Just Music but a Home</h2>
+          <p>EDM is more than beats produced on a screen; its a global movement that draws together millions through its rhythm and energy. Its global appeal provides a space where personal expression can grow into a connecting force, creating community anywhere you go.</p>
+        </div>
+      </div>
+      <aside class="pull-quote">
           <figure>
             <img src="images/festivals/AvB-crowd.jpg" alt="DJ in front of a crowd.">
             <figcaption>Armin van Buuren performs at Untold Festival 2018</figcaption>
@@ -396,106 +326,46 @@
           <hr>
           <h3>Armin van Buuren</h3>
         </aside>
-      </div>
-      <div class="scroll-in">
-
-        <div class="artist-tease">
-          <h3>Artists That Define the Sound</h3>
-          <p>EDM features some of the biggest names in the music industry, and many that you probably would recognize. Here's a few of the biggest DJs whose music helped push electronic music to its current heights.</p>
-        </div>
-
-        <div class="icon-row">
-
-          <div class="icon-wrapper">
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO0sabi8" target="_blank"><img class="icon" src="images/artists/armin.jpg"></a>
-            <p class="caption">Armin van Buuren</p>
-          </div>
-          
-          <div class="icon-wrapper">
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO0PRpBu" target="_blank"><img class="icon" src="images/artists/avicii.jpg"></a>
-            <p class="caption">Avicii</p>
-          </div>
-
-          <div class="icon-wrapper">
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO4vD8f6" target="_blank"><img class="icon" src="images/artists/calvin-harris.jpg"></a>
-            <p class="caption">Calvin Harris</p>
-          </div>
-
-          <div class="icon-wrapper">
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO0TXLQk" target="_blank"><img class="icon" src="images/artists/david-guetta.jpg"></a>
-            <p class="caption">David Guetta</p>
-          </div>
-
-          <div class="icon-wrapper">
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO36pSwM" target="_blank"><img class="icon" src="images/artists/skrillex.jpg"></a>
-            <p class="caption">Skrillex</p>
-          </div>
-
-          <div class="icon-wrapper">
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO0H7Hk1" target="_blank"><img class="icon" src="images/artists/shm.jpg"></a>
-            <p class="caption">Swedish House Mafia</p>
-          </div>
-
-          <div class="icon-wrapper">
-            <a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO1mCYVO" target="_blank"><img class="icon filter" src="images/artists/tiesto.jpg"></a>
-            <p class="caption">Tiësto</p>
-          </div>
-          
-        </div>
-      </div>
-      <div class="scroll-in">
-        <div class="atmosphere">
-          <h3>Not Just Music but a Home</h3>
-          <p>EDM is more than beats produced on a screen; its a global movement that draws together millions through its rhythm and energy. Its global appeal provides a space where personal expression can grow into a connecting force, creating community anywhere you go.</p>
-        </div>
-        <div class="gallery">
-          <div class="gallery-img scroll-in span5">
-            <img src="images/festivals/edc-orlando.jpg">
-          </div>
-          <div class="gallery-img scroll-in span3">
-            <img src="images/festivals/edc-orlando.jpg">
-          </div>
-          <div class="gallery-img scroll-in span4">
-            <img src="images/festivals/edc-orlando.jpg">
-          </div>
-          <div class="gallery-img scroll-in span4">
-            <img src="images/festivals/edc-orlando.jpg">
-          </div>
-        </div>
-      </div>
     </section>
     <section class="navPortal">
-      <h2 class="scroll-in">Want to Learn More?</h2>
+      <h2 class="scroll-in">Ready to Explore the Genre?</h2>
       <div class="card what-is scroll-in">    
-        <h3>What is EDM?</h3>
+        <h3>The History of EDM</h3>
         <div class="cardContent">
-        <p>Electronic Dance Music, or EDM, is the umbrella term for electronic music genres originally made for nightclubs, raves, and festivals.</p>
-        <p>Among the melodic and euphoric sounds of house music, the dark and grimy beats of dubstep, or fast tempos and playful sounds of happy hardcore there are so many genres to dive into.</p>
-        <a href="about-edm.html">Explore Here</a>
+        <p>Explore the timeline of electronic and dance music's rise, fall, and rise again into the peaks of music popularity.</p>
+        <a href="about-edm.html">Learn More</a>
         </div>
       </div>
       
-      <div class="card culture scroll-in">
-        <h3>Culture That Connects</h3>
+      <div class="card sample scroll-in">
+        <h3>The Art of Sampling</h3>
         <div class="cardContent">
-        <p>EDM is a global culture powered by sound, movement, and connection. From underground clubs to massive festival stages, EDM unites people from all walks of life through an immersive experience shaped by inclusivity and shared passion.</p>
-        <a href="edm-culture.html">Learn More</a>
+          <p>The technique most ubiquitous in the genre. See a breakdown of some of the most iconic tracks that use sampling.</p>
+          <a href="sample.html">Learn More</a>
         </div>
-        
       </div>
+      
+      <div class="card synth scroll-in">
+        <h3>The Synthesizer</h3>
+        <div class="cardContent">
+        <p>Play with a 3D model and learn more about the instrument that makes the music possible.</p>
+        <a href="model.html">Explore Here</a>
+        </div>
+      </div>
+
+      <div class="card navGal scroll-in">
+        <h3>EDM Visualized</h3>
+        <div class="cardContent">
+        <p>EDM is not just defined by the music, immerse yourself in visuals that show the full depth of the genre.</p>
+        <a href="gallery.html">Explore</a>
+        </div>
+      </div>
+
       <div class="card guide scroll-in">
-        <h3>Concert Guide</h3>
+        <h3>Dive in to EDM</h3>
         <div class="cardContent">
-        <p>Learn how to make the most of your time at an event, and ensure that you have everything you need to enjoy your time in the scene.</p>
-        <a href="concert-guide.html">Get Prepared</a>
-        </div>
-      </div>
-  
-      <div class="card event-finder scroll-in">
-        <h3>Find a Festival</h3>
-        <div class="cardContent">
-          <p>Now that you've learned the basics, its time to join the crowds and groove to the beats.</p>
-          <a href="festival-finder.html">Plan Your Next Concert</a>
+          <p>Have you been fully entranced by dance music? Learn more about the culture around festivals and shows, tips and tricks for enjoying your time at them, and where to find one to attend.</p>
+          <a href="festival-finder.html">Deep Dive</a>
         </div>
       </div>
       
