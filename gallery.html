@@ -1,0 +1,246 @@
+<!--Gallery page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            audiowide: ['"Audiowide"', 'sans-serif'],
+            exo: ['"Exo 2"', 'sans-serif'],
+            orbitron: ['"Orbitron"', 'sans-serif'],
+          },
+          colors: {
+        // Now use bg-nova, text-nova everywhere — no hex codes!
+          nova:   { onyx: '#0a0a0a', iron: '#9c9c9c', smoke: '#f6f4f4', blue: '#6987c9', hovblue: '#455985'},
+          brand:  '#0a0a0a',
+          }
+        }
+      }
+    }
+  </script>
+  <title>The Sights of EDM - A Beginner's Guide to EDM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .gallery-item {
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .overlay {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .gallery-item {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #lightbox {
+      /*Lightbox layout is active but hidden, allowing to make a smooth fade-in on click*/
+      display: flex;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="font-exo bg-nova-onyx text-nova-smoke m-0 p-0 text-lg">
+  <header>
+    <!--Mobile navigation-->
+    <nav class="sticky top-0 z-50 bg-nova-iron py-2 md:py-4">
+      <button id="menu" onclick="toggleMenu()" class="flex flex-col gap-1 p2 cursor-pointer md:hidden">
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+      </button>
+      <div id="navLinks" class="fixed top-5.5 left-0 font-orbitron bg-nova-iron text-nova-onyx flex-col w-[200px] overflow-hidden opacity-0 -translate-y-2.5 transition-all duration-300 ease-in-out z-[50] rounded-sm max-h-0">
+        <a href="index.html" class="px-4 py-2 block">Home</a>
+        <a href="about-edm.html" class="px-4 py-2 block">History</a>
+        <a href="model.html" class="px-4 py-2 block">The Synthesizer</a>
+        <a href="sample.html" class="px-4 py-2 block">Sampling</a>
+        <a href="festival-finder.html" class="px-4 py-2 block">Guide</a>
+      </div>
+      <!--Desktop navigation-->
+      <ul class="hidden md:flex gap-6 font-orbitron text-nova-onyx">
+        <li><a href="index.html" class="pl-4">Home</a></li>
+        <li><a href="about-edm.html" class="p-2">History</a></li>
+        <li><a href="model.html" class="p-2">The Synthesizer</a></li>
+        <li><a href="sample.html" class="p-2">Sampling</a></li>
+        <li><a href="festival-finder.html" class="p-2">Festival Finder</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="p-6 max-w-5xl mx-auto md:max-w-full">
+      <h2 class="text-4xl font-audiowide mb-1">EDM Visualized</h2>
+      <p class="text-sm text-nova-smoke mb-5">Click any image to expand</p>
+
+      <div class="columns-2 md:columns-3 xl:columns-4 gap-4 space-y-4">
+
+        <!--Each gallery image has an overlay that displays a short title and photographer name-->
+        <!--Dataset in the image container is used to give full credit when clicked and lightbox is opened-->
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="Aditya Chinchure" data-profile="https://unsplash.com/@adityachinchure"
+        data-link="https://unsplash.com/photos/group-of-people-in-front-of-stage-ZhQCZjr9fHo">
+          <img src="images/unsplash/aditya-chinchure-ZhQCZjr9fHo-unsplash.jpg" alt="Crowd of people in front of a stage" class="w-full h-auto object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm">Festival Crowd</span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5">Aditya Chinchure</span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="Zac Wolff" data-profile="https://unsplash.com/@zacwolff" data-link="https://unsplash.com/photos/woman-standing-beside-graffiti-wall-nlZqFkYwxC0">
+          <img src="images/unsplash/zac-wolff-nlZqFkYwxC0-unsplash.jpg" alt="Woman stands in front of grafitti wall" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm">Rave Outfit</span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5">Zac Wolff</span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="Zac Bromell" data-profile="https://unsplash.com/@zac_bromell" data-link="https://unsplash.com/photos/person-playing-audio-mixer-with-green-lights-8OSCcHPjoX4">
+          <img src="images/unsplash/zac-bromell-8OSCcHPjoX4-unsplash.jpg" alt="Person playing an audio mixer" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm">Audio Mixer</span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5">Zac Bromell</span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="George Lemon" data-profile="https://unsplash.com/@lsdforsociety" data-link="https://unsplash.com/photos/turned-on-black-laptop-computer-2zH2tDtmGro">
+          <img src="images/unsplash/george-lemon-2zH2tDtmGro-unsplash.jpg" alt="Turned on black laptop computer" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm">DJ Home Studio</span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5">George Lemon</span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="" data-profile="" data-link="">
+          <img src="" alt="" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm"></span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5"></span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="" data-profile="" data-link="">
+          <img src="" alt="" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm"></span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5"></span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="Laszlo Barta" data-profile="https://unsplash.com/@slie_design" data-link="https://unsplash.com/photos/dj-performing-for-an-excited-crowd-at-a-concert-TFQ0VClZLSU">
+          <img src="images/unsplash/laszlo-barta-TFQ0VClZLSU-unsplash.jpg" alt="DJ performs in front of an excited crowd" class="w-full h-auto object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm">DJ Set Performance</span>
+            <span class="gallery-element text-nova-iron text-xs mt-0.5">Laszlo Barta</span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="" data-profile="" data-link="">
+          <img src="" alt="" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm"></span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5"></span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="" data-profile="" data-link="">
+          <img src="" alt="" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm"></span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5"></span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="" data-profile="" data-link="">
+          <img src="" alt="" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm"></span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5"></span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="" data-profile="" data-link="">
+          <img src="" alt="" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm"></span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5"></span>
+          </div>
+        </div>
+
+        <div class="gallery-item relative rounded-xl overflow-hidden bg-nova-iron" onclick="openLightbox(this)" data-photographer="" data-profile="" data-link="">
+          <img src="" alt="" class="w-full h-full object-cover">
+          <div class="overlay absolute inset-0 bg-nova-onyx bg-opacity-40 flex flex-col justify-end p-4">
+            <span class="gallery-title text-nova-smoke text-sm"></span>
+            <span class="gallery-credit text-nova-iron text-xs mt-0.5"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="lightbox" class="fixed inset-0 z-50 bg-nova-onyx bg-opacity-90 items-center justify-center overflow-y-auto p-6" onclick="closeLightbox()">
+      <!--stopPropagation() allows users to follow credit links to photographer profile while keeping lightbox open when returning to tab-->
+      <div class="relative max-w-3xl w-full mx-4" onclick="event.stopPropagation()">
+        <img id="lightbox-img" src="" alt="" class="w-full max-h-[80vh] object-contain rounded-2xl">
+        <div class="mt-3 text-center">
+          <p id="lightbox-title" class="text-nova-smoke"></p>
+          <p id="lightbox-cap" class="text-nova-iron text-sm mt-0.5"></p>
+        </div>
+        <button onclick="closeLightbox()" class="absolute -top-4 -right-4 w-9 h-9 rounded-full bg-nova-smoke text-nova-iron flex items-center justify-center text-xl font-light leading-none hover:bg-nova-iron">&times;</button>
+      </div>
+    </div>
+  </main>
+<script src="js/script.js"></script>
+<script>
+  //lightbox function created with the help of ChatGPT
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    const title = el.querySelector('.gallery-title').textContent;
+    const credit = el.querySelector('.gallery-credit');
+    const photographer = el.dataset.photographer;
+    const profile = el.dataset.profile;
+    const link = el.dataset.link;
+
+    //grabs photo information to display in the lightbox
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-title').textContent = title;
+    //Adds photographer credit from dataset into the caption when lightbox opens
+    document.getElementById('lightbox-cap').innerHTML = `Photo by <a href="${profile}" target="_blank" class="underline">${photographer}</a> on <a href="${link}" target="_blank" class="underline">Unsplash</a>`;
+    document.getElementById('lightbox').classList.add('open');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+</script>
+</body>
+</html>
