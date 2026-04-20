@@ -1,9 +1,9 @@
 /*Fonts & Common Styles*/
 :root {
-  --iron: #444545;
-  --smoke: #F6F4F4;
-  --onyx: #0A0A0A;
-  --glaucous: #6987c9;
+  --iron: #9c9c9c; /*secondary text & surface/card backgrounds*/
+  --smoke: #F6F4F4; /*primary text & headers*/
+  --onyx: #0A0A0A; /*page background*/
+  --glaucous: #6987c9; /*accents and highlights*/
   --navHeight: 80px;
 }
 
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: "Orbitron", Arial, Helvetica, sans-serif;
+  font-family: "Exo 2", Arial, Helvetica, sans-serif;
   background-color: var(--onyx);
   color: var(--smoke);
   margin: 0;
@@ -39,7 +39,7 @@ a {
   text-decoration: none;
   padding: 25px;
   font-size: 18px;
-  color: var(--smoke);
+  color: var(--onyx);
   margin: 0 5px 0 5px;
 }
 
@@ -48,6 +48,7 @@ nav {
   top: 0;
   left: 0;
   width: 100vw;
+  font-family: "Orbitron", Arial, Helvetica, sans-serif;
   height: var(--navHeight);
   z-index: 1000;
   display: flex;
@@ -69,14 +70,14 @@ nav {
 .mobileNav span {
   width: 25px;
   height: 3px;
-  background: var(--smoke);
+  background: var(--onyx);
   border-radius: 2px;
 }
 
 @media (max-width: 768px) {
   .navLinks {
     position: fixed;
-    top: 40px;
+    top: var(--navHeight);
     left: 0;
     background-color: var(--iron);
     flex-direction: column;
