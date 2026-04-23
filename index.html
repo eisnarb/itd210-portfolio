@@ -53,17 +53,12 @@
       z-index: 2;
       height: 100%;
       color: var(--smoke);
-      font-size: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       animation: load-in 3s ease-out forwards;
-    }
-
-    .heroContent h1 {
-      font-size: 3em;
     }
 
     .heroContent a {
@@ -84,10 +79,6 @@
 
     .taster {
       padding: 18px 0 26px;
-    }
-
-    .taster h3 {
-      font-size: 3rem;
     }
 
     .hook {
@@ -289,24 +280,51 @@
       font-size: 2.5em;
     }
 
-    .card:hover::before {
-      opacity: 0;
-    }
+    /*Desktop card hover*/
+    @media (min-width:641px) {
+      .card:hover::before {
+        opacity: 0;
+      }
 
-    .card:hover::after {
-      opacity: 1;
-    }
+      .card:hover::after {
+        opacity: 1;
+      }
 
-    .card:hover h3 {
-      opacity: 0;
-      transform: translateY(-10px);
-      pointer-events: none;
-    }
+      .card:hover h3 {
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+      }
 
-    .card:hover > .cardContent{
-      opacity: 1;
-      transform: translateY(0);
+      .card:hover > .cardContent{
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
+    
+
+    /*Mobile card activation*/
+    @media (max-width:640px) {
+      .card.touch-active::before {
+        opacity: 0;
+      }
+
+      .card.touch-active::after {
+        opacity: 1;
+      }
+
+      .card.touch-active h3 {
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+      }
+
+      .card.touch-active > .cardContent {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
 
     .navPortal h2 {
       grid-area: tag;
@@ -413,9 +431,9 @@
       </video>
       <div class="heroOverlay"></div>
       <div class="heroContent">
-        <h1>Entranced by Dance</h1>
-        <p>A Beginner's Guide to Electronic Dance Music</p>
-        <a href="#content">Fall in Love With the Sound</a>
+        <h1 class="text-6xl md:text-7xl">Entranced by Dance</h1>
+        <p class="text-xl sm:text-2xl md:text-3xl">A Beginner's Guide to Electronic Dance Music</p>
+        <a href="#content" class="text-xl sm:text-2xl md:text-3xl">Fall in Love With the Sound</a>
       </div>
       <div id="content"></div>
     </section>
@@ -546,8 +564,27 @@
       setInterval(() => {
         const next = (currentSlide + 1) % slides.length;
         showSlide(next);
-      }, 20000);
+      }, 15000);
     }
+
+    //Mobile card touch toggle
+    //Created with the help of ClaudeAI
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        //Prevent toggle if they click the inner link
+        if (e.target.name === 'A') return;
+
+        const isActive = this.classList.contains('touch-active');
+
+        //Close other open cards
+        document.querySelectorAll('.card.touch-active').forEach(c => {
+          c.classList.remove('touch-active');
+        })
+
+        //Activate the clicked card
+        if (!isActive) this.classList.add('touch-active');
+      });
+    });
   </script>
 </body>
 </html>
