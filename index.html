@@ -251,6 +251,7 @@
       opacity: 0;
       transform: translateY(15px);
       transition: opacity 0.4s ease, transform 0.4s ease;
+      pointer-events: none;
     }
 
     .cardContent a {
@@ -299,6 +300,7 @@
       .card:hover > .cardContent{
         opacity: 1;
         transform: translateY(0);
+        pointer-events: auto;
       }
     }
     
@@ -322,6 +324,7 @@
       .card.touch-active > .cardContent {
         opacity: 1;
         transform: translateY(0);
+        pointer-events: auto;
       }
     }
     
