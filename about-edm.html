@@ -120,6 +120,7 @@
 
       let current = 0;
 
+      //Slide display function
       function render() {
         const e = events[current];
         const card = document.getElementById('timelineCard');
@@ -144,6 +145,7 @@
         }
       }
 
+      //Mute button logic
       muteBtn.addEventListener('click', () => {
           muted = !muted;
           audio.muted = muted;
