@@ -13,5 +13,7 @@ what the genre is, the different subgenres, items and ways to prepare for a fest
 ## Course
 ITD 210 Web Development - Northern Virginia Community College
 
-## Milestone 3
-Gallery page added, major update to the landing page and its structure.
+## Milestone 4
+History page updated; slideshow created with background images and audio, and navigation buttons included.
+Credits page created to ensure proper attribution and credit to original creators of photo, video, and audio media used on the site.
+Additional code commenting to explain what and why for code.
