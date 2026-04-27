@@ -59,6 +59,7 @@
     </nav>
   </header>
   <main class="flex flex-col text-center items-center gap-5 max-w-full min-w-0 p-4 mt-2 text-xl">
+    <!--Split Hero-->
     <section class="md:grid grid-cols-2 gap-1">
       <div class="flex flex-col items-center justify-center">
         <h1 class="font-audiowide text-4xl md:text-5xl lg:text-6xl mb-6">Welcome to the World of EDM</h1>
@@ -75,10 +76,10 @@
       <div id="timelineCard" class="relative w-full max-w-full min-h-[80vh] rounded-2xl bg-cover bg-center overflow-hidden mb-2">
         <!--Audio-->
         <audio id="timelineAudio" loop preload="metadata"></audio>
-        <!--Overlay-->
+        <!--Overlay to help make content readable over background images-->
         <div class="absolute inset-0 bg-black/70 rounded-2xl"></div>
 
-        <!--Content-->
+        <!--Content that is filled by events data in JavaScript-->
         <div class="relative z-10 flex flex-col justify-end h-full min-h-[500px] p-6 gap-2">
           <p id="year" class="text-md font-exo text-nova-smoke tracking-widest md:text-2xl"></p>
           <p id="title" class="text-3xl md:text-4xl font-exo text-nova-smoke"></p>
@@ -86,7 +87,7 @@
         </div>
         
       </div>
-      <!--Navigation-->
+      <!--Navigation buttons-->
       <div id="timelineNav" class="flex items-center justify-center gap-2">
         <button id="prev" class="bg-nova-smoke rounded-md hover:bg-nova-iron transition-all duration-200"><img src="images/icons/previous.svg" class="max-w-[30px] md:max-w-[40px]"></button>
         <span id="counter"></span>
