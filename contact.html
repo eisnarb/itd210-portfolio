@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            audiowide: ['"Audiowide"', 'sans-serif'],
+            exo: ['"Exo 2"', 'sans-serif'],
+            orbitron: ['"Orbitron"', 'sans-serif'],
+          },
+          colors: {
+        // Now use bg-nova, text-nova everywhere — no hex codes!
+          nova:   { onyx: '#0a0a0a', iron: '#9c9c9c', smoke: '#f6f4f4', blue: '#6987c9', hovblue: '#455985'},
+          brand:  '#0a0a0a',
+          }
+        }
+      }
+    }
+  </script>
+  <title>The Sights of EDM - A Beginner's Guide to EDM</title>
+
+</head>
+<body class="font-exo bg-nova-onyx text-nova-smoke m-0 p-0 text-lg flex flex-col min-h-screen">
+  <header>
+    <!--Mobile navigation-->
+    <nav class="sticky top-0 z-50 bg-nova-iron py-2 md:py-4">
+      <button id="menu" onclick="toggleMenu()" class="flex flex-col gap-1 p2 cursor-pointer md:hidden">
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+        <span class="w-6 h-1 bg-nova-onyx rounded-sm mx-1"></span>
+      </button>
+      <div id="navLinks" class="fixed top-5.5 left-0 font-orbitron bg-nova-iron text-nova-onyx flex-col w-[200px] overflow-hidden opacity-0 -translate-y-2.5 transition-all duration-300 ease-in-out z-[50] rounded-sm max-h-0">
+        <a href="index.html" class="px-4 py-2 block">Home</a>
+        <a href="about-edm.html" class="px-4 py-2 block">History</a>
+        <a href="model.html" class="px-4 py-2 block">The Synthesizer</a>
+        <a href="sample.html" class="px-4 py-2 block">Sampling</a>
+        <a href="gallery.html" class="px-4 py-2 block">Gallery</a>
+        <a href="festival-finder.html" class="px-4 py-2 block">Guide</a>
+      </div>
+      <!--Desktop navigation-->
+      <ul class="hidden md:flex gap-6 font-orbitron text-nova-onyx">
+        <li><a href="index.html" class="pl-4">Home</a></li>
+        <li><a href="about-edm.html" class="p-2">History</a></li>
+        <li><a href="model.html" class="p-2">The Synthesizer</a></li>
+        <li><a href="sample.html" class="p-2">Sampling</a></li>
+        <li><a href="gallery.html" class="p-2">Gallery</a></li>
+        <li><a href="festival-finder.html" class="p-2">Guide</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1 class="text-audiowide text-4xl text-center mt-4 sm:text-5xl lg:text-6xl">Have Questions, Inquiries or Comments?</h1>
+    <p class="text-center mb-4">Use the form below to contact the site owner and you will receive a prompt response.</p>
+    <section class="max-w-md mx-auto p-2 mb-4 bg-nova-smoke rounded-sm sm:max-w-xl md:max-w-3xl lg:max-w-5xl">
+      
+      <!--Live error summary (aria announces errors to screen readers)-->
+      <div id="errorSummary" class="hidden mb-4 p-3 bg-red-200 text-red-900 rounded" role="alert" aria-live="polite"></div>
+
+      <!--Success Message (hidden until the form is validated)-->
+      <div id="successMessage" class="hidden mb-4 p-4 bg-green-200 text-green-900 rounded text-center">
+        Thank you! Your message has been sent successfully!
+      </div>
+
+      <!--Contact Form, novalidate ensures that JavaScript handles validation instead of browser-->
+      <form class="contact-form text-nova-onyx w-full flex flex-col gap-2" id="contactForm" action="https://formspree.io/f/mojrezdl" method="POST" novalidate>
+
+      <!--Regular Form Fields-->
+
+      <!--Name Field-->
+      <label for="name" class="font-semibold">Name <span class="text-red-600">*</span></label>
+      <input type="text" id="name" name="name" placeholder="Your Name" required aria-describedby="nameError" class="p-2 rounded border focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <!--Inline error message, hidden until error occurs-->
+      <p id="nameError" class="text-red-600 text-sm hidden"></p>
+
+      <!--Email Field-->
+      <label for="email" class="font-semibold">Email <span class="text-red-600">*</span></label>
+      <input type="email" id="email" name="email" placeholder="your.email@address.com" required aria-describedby="emailError" class="p-2 rounded border focus:outline-none focus:ring-2 focus:ring-blue-500">
+      
+      <p id="emailError" class="text-red-600 text-sm hidden"></p>
+
+      <!--Subject Field-->
+      <label for="subject" class="font-semibold">Subject <span class="text-red-600">*</span></label>
+      <select id="subject" name="subject" required aria-describedby="subjectError" class="p-2 rounded border focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option value="" disabled selected>-- Select Message Subject --</option> <!--Disabled select option acts as a placeholder, blank value ensures it doesn't submit anything and disabled prevents it from being a valid choice-->
+        <option value="question">General Question</option>
+        <option value="attribution">Attribution Inquiry</option>
+        <option value="issue">Site Issue</option>
+        <option value="feedback">Feedback</option>
+      </select>
+
+      <p id="subjectError" class="text-red-600 text-sm hidden"></p>
+
+      <!--Message Field-->
+      <label for="message" class="font-semibold">Message <span class="text-red-600">*</span></label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message..." required minlength="20" aria-describedby="messageError messageCounter" class="p-2 rounded border focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+
+      <!--Live character counter, JS to handle this created with the help of ClaudeAI-->
+      <div id="messageCounter" class="text-sm text-nova-onyx/80"> 0 characters (minimum 20 required)</div>
+
+      <p id="messageError" class="text-red-600 text-sm hidden"></p>
+
+      <!--Honeypot Field, hidden from users but catches bots-->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <!--Submission-->
+      <button type="submit" class="p-3 cursor-pointer bg-nova-blue rounded-xl max-w-xl mx-auto hover:bg-nova-hovblue hover:text-nova-smoke transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">Send Message</button>
+
+    </form>
+    </section>
+    
+  </main>
+  <footer class="flex flex-wrap justify-evenly mt-auto">
+    <p>&copy; 2026</p> <p>Josh Bransford</p> <p>NVCC ITD-210</p>
+    <div class="flex basis-full justify-center gap-5">
+      <p>Photos and videos obtained from various authors</p><a href="credits.html" class="underline">Full media credits here</a>
+    </div>
+  </footer>  
+  <script>
+    //Form Validation
+    //Handles: required field checks, email formatting, message length validation, inline error display, success message, live character count
+
+    //Form and UI constants
+    const form = document.getElementById("contactForm");
+
+    const errorSummary = document.getElementById("errorSummary");
+    const successMessage = document.getElementById("successMessage");
+
+    //Input field constants
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const subjectInput = document.getElementById("subject");
+    const messageInput = document.getElementById("message");
+    const messageCounter = document.getElementById("messageCounter");
+
+    //Error field constants
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const subjectError = document.getElementById("subjectError");
+    const messageError = document.getElementById("messageError");
+
+    //Email validation
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    //Character counter
+    messageInput.addEventListener("input", () => {
+      const length = messageInput.value.length;
+      messageCounter.textContent = `${length} characters (minimum 20 required)`;
+    });
+
+    //Submission handler
+    //this section of JS created with the help of ClaudeAI
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); // stops default browser behavior
+
+      let isValid = true;
+
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const subject = document.getElementById("subject");
+      const message = document.getElementById("message");
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Clear previous errors
+      document.querySelectorAll("[id$='Error']").forEach(el => {
+        el.textContent = "";
+        el.classList.add("hidden");
+      });
+
+      //Validation
+
+      //Name Validation; trims the value taken from the name field, if blank throws an error
+      if (name.value.trim() === "") {
+        document.getElementById("nameError").textContent = "Name is required.";
+        document.getElementById("nameError").classList.remove("hidden");
+        isValid = false;
+      }
+
+      //Email Validation; tests the given email against the email regex, if fails throws an error
+      if (!emailRegex.test(email.value)) {
+        document.getElementById("emailError").textContent = "Enter a valid email.";
+        document.getElementById("emailError").classList.remove("hidden");
+        isValid = false;
+      }
+
+      //Subject Validation; If the user did not select a subject throws an error
+      if (!subject.value) {
+        document.getElementById("subjectError").textContent = "Please select a subject.";
+        document.getElementById("subjectError").classList.remove("hidden");
+        isValid = false;
+      }
+
+      //Message Validation; Trims the message content, if the length is less than 20 characters throws an error
+      if (message.value.trim().length < 20) {
+        document.getElementById("messageError").textContent =
+          "Message must be at least 20 characters.";
+        document.getElementById("messageError").classList.remove("hidden");
+        isValid = false;
+      }
+
+      //Stops the submission if any fields are invalid
+      if (!isValid) return;
+
+      //Sends to Formspree
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: {
+            "Accept": "application/json"
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+
+          document.getElementById("successMessage").classList.remove("hidden");
+          document.getElementById("errorSummary").classList.add("hidden");
+
+          // reset message character counter
+          const counter = document.getElementById("messageCounter");
+          if (counter) counter.textContent = "0 characters (minimum 20 required)";
+        } else {
+          document.getElementById("errorSummary").textContent =
+            "Something went wrong. Please try again.";
+          document.getElementById("errorSummary").classList.remove("hidden");
+        }
+
+      } catch (error) {
+        document.getElementById("errorSummary").textContent =
+          "Network error. Please try again later.";
+        document.getElementById("errorSummary").classList.remove("hidden");
+      }
+    });
+  </script>
+  <script src="js/script.js"></script>
+  </body>
+  </html>
