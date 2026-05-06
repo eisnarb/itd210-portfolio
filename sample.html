@@ -65,11 +65,11 @@
       <div class="mb-4">
         <h1 class="font-audiowide text-6xl text-center mb-2">The Art of Sampling</h1>
         <p class="text-center md: max-w-4xl mx-auto">Sampling is a technique that involves reusing a portion (or sample) of a song or recording in another recording, and is a foundational technique in electronic music production.</p>
-        <p class="text-center">Explore this page and learn more about the technique.</p>
+        <p class="text-center mb-4">Explore this page and learn more about the technique.</p>
       </div>
       <article class="text-center mb-6 grid md:text-left md:grid-cols-2">
         <div class="flex flex-col gap-4  md:order-1">
-          <h2 class="text-4xl md:text-left">A Brief History of Sampling</h2>
+          <h2 class="font-orbitron text-4xl md:text-left">A Brief History of Sampling</h2>
           <p class="my-6">The origins of sampling dates back to the 1970s with the emergence of hip-hop. Artists like DJ Kool Herc were known to play funk and soul records while MCs would rap live over different sections of the records; the very basic idea of sampling.</p>
           <!--On mobile the image appears in between the paragraphs but is hidden on larger screens-->
           <figure class="md:hidden">
@@ -85,14 +85,15 @@
         </figure>
       </article>
       <article class="text-center mb-6 md:text-left">
-        <h2 class="text-4xl">What Makes a Good Sample?</h2>
+        <h2 class="font-orbitron text-4xl">What Makes a Good Sample?</h2>
         <p>Sampling is a versatile technique that can provide sonic depth to a song. But what makes for a good sample? Considering it is music, the answer to that question can be quite subjective, however there are some factors that can make any sample sound amazing and improve a song.</p>
         <p>Factors like a sample's sound quality, sonic flexibility, emotional quality, and most importantly the artist's creativity and vision can make or break a sample for a song.</p>
         <p>All in all though, it comes down to what sounds good to the artist, and the production techniques they apply to the sample that make a sample "good".</p>
       </article>
       <article>
-        <h2 class="text-4xl text-center mb-4">Sampling in Action</h2>
+        <h2 class="font-orbitron text-4xl text-center mb-4">Sampling in Action</h2>
         <p class="mb-2">Before their retirement, Daft Punk were considered one of the best sampling artists in EDM. Check out this video detailing how they manipulated samples for their song Face To Face.</p>
+        <h3 class="font-orbitron text-2xl text-center mt-2 font-semibold">Sample Breakdown: Daft Punk - Face to Face</h3>
         <!--Video does not allow embeds, video thumbnail trick created with help of Claude AI-->
         <!--Link sends user to YouTube video-->
         <a href="https://www.youtube.com/watch?v=gJ9c03lW6Mc" target="_blank" class="block w-full max-w-3xl mx-auto mb-4"> 
@@ -109,38 +110,49 @@
             </div>
           </div>
         </a>
+        
         <p class="mb-2">Music devices like launchpads have allowed artists to continue to push the creative bounds of sampling. Check out these two tracks that are comprised almost entirely of samples that are triggered using a launchpad.</p>
+        <!--Div creates a flexbox to allow the videos to sit side-by-side with each other-->
         <div class="flex flex-col gap-3 md:flex-row gap-1 justify-evenly mb-4">
-          <!--Link sends user to YouTube video-->
-          <a href="https://www.youtube.com/watch?v=qAeybdD5UoQ" target="_blank" class="block w-full max-w-3xl mx-auto mb-4"> 
-            <!--Create a div the size of a video player-->
-            <div class="relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer group">
-              <!--YouTube thumbnail-->
-              <img src="https://img.youtube.com/vi/qAeybdD5UoQ/maxresdefault.jpg" class="w-full h-full object-cover"
-              alt="Shawn Wasabi - Marble Soda (Live Mashup)">
-              <!--Play button overlay-->
-              <div class="absolute inset-0 flex items-center justify-center bg-black/40 group hover:bg-black/60 transition-all duration-300">
-                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
-                  <img src="images/icons/play-btn.svg" class="w-10 h-10 ml-1" alt="Play">
+          <!--Separate div so a title can be placed above the video-->
+          <div>
+            <h3 class="font-orbitron font-semibold text-2xl text-center mb-1">Shawn Wasabi - Marble Soda (Live Mashup)</h3>
+            <!--Link sends user to YouTube video-->
+            <a href="https://www.youtube.com/watch?v=qAeybdD5UoQ" target="_blank" class="block w-full max-w-3xl mx-auto mb-4"> 
+              <!--Create a div the size of a video player-->
+              <div class="relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer group">
+                <!--YouTube thumbnail-->
+                <img src="https://img.youtube.com/vi/qAeybdD5UoQ/maxresdefault.jpg" class="w-full h-full object-cover"
+                alt="Shawn Wasabi - Marble Soda (Live Mashup)">
+                <!--Play button overlay-->
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 group hover:bg-black/60 transition-all duration-300">
+                  <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
+                    <img src="images/icons/play-btn.svg" class="w-10 h-10 ml-1" alt="Play">
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
-          <!--Link sends user to YouTube video-->
-          <a href="https://www.youtube.com/watch?v=lTx3G6h2xyA" target="_blank" class="block w-full max-w-3xl mx-auto mb-4"> 
-            <!--Create a div the size of a video player-->
-            <div class="relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer group">
-              <!--YouTube thumbnail-->
-              <img src="https://img.youtube.com/vi/lTx3G6h2xyA/maxresdefault.jpg" class="w-full h-full object-cover"
-              alt="Madeon - Pop Culture (live mashup)">
-              <!--Play button overlay-->
-              <div class="absolute inset-0 flex items-center justify-center bg-black/40 group hover:bg-black/60 transition-all duration-300">
-                <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
-                  <img src="images/icons/play-btn.svg" class="w-10 h-10 ml-1" alt="Play">
+            </a>
+          </div>
+          
+          <div>
+            <h3 class="font-orbitron font-semibold text-2xl text-center mb-1">Madeon - Pop Culture (live mashup)</h3>
+            <!--Link sends user to YouTube video-->
+            <a href="https://www.youtube.com/watch?v=lTx3G6h2xyA" target="_blank" class="block w-full max-w-3xl mx-auto mb-4"> 
+              <!--Create a div the size of a video player-->
+              <div class="relative w-full aspect-video rounded-2xl overflow-hidden cursor-pointer group">
+                <!--YouTube thumbnail-->
+                <img src="https://img.youtube.com/vi/lTx3G6h2xyA/maxresdefault.jpg" class="w-full h-full object-cover"
+                alt="Madeon - Pop Culture (live mashup)">
+                <!--Play button overlay-->
+                <div class="absolute inset-0 flex items-center justify-center bg-black/40 group hover:bg-black/60 transition-all duration-300">
+                  <div class="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
+                    <img src="images/icons/play-btn.svg" class="w-10 h-10 ml-1" alt="Play">
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
+            </a>
+          </div>
+          
         </div>
         
       </article>
