@@ -8,13 +8,13 @@ what the genre is, the different subgenres, items and ways to prepare for a fest
 ## Technologies Used
 - HTML5
 - CSS3 (Flexbox, Grid, RWD)
+- Tailwind CSS
 - JavaScript
 
 ## Course
 ITD 210 Web Development - Northern Virginia Community College
 
-## Milestone 5
-Contact page created, allowing users to submit form with questions, attribution inquiries, site issues, or feedback.
-Navigation updates on all pages to include new contact page.
-Start of 3D Model page with model added into the site.
-Additional code commenting to explain what and why for code.
+## Final Deploy
+3D Model page finished with the addition of model hotspots, annotations, and annotation legend
+Finalized credit attribution for photos, videos, model assets, and audio
+Finalized code commenting to explain what and why for code.
