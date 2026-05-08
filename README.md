@@ -18,3 +18,6 @@ ITD 210 Web Development - Northern Virginia Community College
 3D Model page finished with the addition of model hotspots, annotations, and annotation legend
 Finalized credit attribution for photos, videos, model assets, and audio
 Finalized code commenting to explain what and why for code.
+
+## Live Link
+https://eisnarb.github.io/itd210-portfolio/
