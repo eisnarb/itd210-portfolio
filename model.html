@@ -26,11 +26,89 @@
       }
     }
   </script>
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+  <!--Import model viewer component-->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.2.0/model-viewer.min.js"></script>
   <title>The Synthesizer - A Beginner's Guide to EDM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /*Call-out buttons*/
+    button[slot^="hotspot"] {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      position: relative;
+      background: #b55d0a;
+      transition: transform 0.2s;
+    }
+
+    .dot::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      border: 1px solid #7d4007;
+    }
+
+    button[slot^="hotspot"]:hover .dot {
+      transform: scale(1.3);
+    }
+    /*Call-out annotations*/
+    .annotation {
+      position: absolute;
+      /*position is set based on hotspot position*/
+      background: rgba(13, 17, 32, 0.92);
+      border: 1px solid #e8620a;
+      border-left: 3px solid #e8620a;
+      padding: 0.5rem 0.85rem;
+      min-width: 160px;
+      max-width: 200px;
+      pointer-events: none;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.25s;
+      white-space: nowrap;
+    }
+
+    .annotation.visible {
+      opacity: 1;
+    }
+
+    .ann-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .ann-desc {
+      font-size: 0.75rem;
+      color: #f6f4f4;
+      white-space: normal;
+    }
+
+    /*Keeps annotations hidden until the model loads*/
+    :not(:defined)>* {
+      display: none;
+    }
+
+    .legend {
+      grid-template-columns: repeat(auto-fill, minmaX(200px, 1fr));
+    }
+
+    .leg-item:hover{
+      background-color: rgba(232, 98, 10, 0.06);
+    }
+  </style>
 </head>
 <body class="font-exo bg-nova-onyx text-nova-smoke m-0 p-0 text-lg">
   <header class="mb-4">
@@ -61,17 +139,168 @@
     </nav>
   </header>
   <main>
-    <section>
-      <h1 class="font-audiowide text-5xl text-center md:text-7xl">The Synthesizer</h1>
+    <section class="pb-6 mb-6">
+      <h1 class="font-audiowide text-5xl text-center mb-2 md:text-7xl">The Synthesizer</h1>
       <!--Additional content introducing the synthesizer goes here-->
-      <article></article>
+      <article class="max-w-5xl mx-auto">
+        <p class="text-center mb-4">The synthesizer is a foundational instrument in electronic music production. It works both as a sound source, being able to create raw sound using electrical signals, and creative tool that manipulates sounds.</p>
+        <p class="text-center mb-4">The modular synthesizer is the most used type of synthesizer for modern music production and you can scroll below to explore a model of the Moog Grandmother synth and learn more about its parts.</p>
+      </article>
     </section>
     <h2 class="font-orbitron text-4xl text-center">Explore the Synthesizer</h2>
     <!--3d model-->
-    <model-viewer src="assets/moog_grandmother_semi-modular_analog_synthesizer.glb" alt="3D model of a moog synthesizer" ar ar-modes="webxr scene-viewer quick-look" camera-controls auto-rotate shadow-intensity="1" exposure="1.1" style="width:100%; height:480px; background:#0b0e1c;">
-      <!--tooltip callouts to be added, giving users additional information while looking at the synthesizer model-->
+    <model-viewer id="mv" src="assets/moog_grandmother_semi-modular_analog_synthesizer.glb" alt="3D model of a moog synthesizer" loading="eager" poster="images/unsplash/tstudio_lv-CpCgOckQhRg-unsplash.jpg" ar ar-modes="webxr scene-viewer quick-look" camera-controls auto-rotate auto-rotate-delay="10000" shadow-intensity="1" exposure="1.1" camera-orbit="30deg 45deg 105%" style="width:100%; height:720px; background:#0b0e1c;" data-js-focus-visible>
+      <!--tooltip callouts giving users additional information while looking at the synthesizer model, created with help of online documentation and ClaudeAI-->
+      <!--Slot pins the button onto the 3d model, data-position is the 3d coordinate on the model that the button is anchored to, data-normal determines when the button is shown or hidden based on the direction the model is facing, data-visibility-attribute ensures that the data-normal visibility works correctly.-->
+      <button slot="hotspot-1" data-position="74.71067504254563m 24.056301854063385m 237.26362291631048m" data-normal="0m 0.9995807392487835m -0.02895420043543923m" data-visibility-attribute="visible">
+        <div class="dot"></div>
+        <div class="annotation" id="ann1">
+          <div class="ann-title">Keyboard</div>
+          <div class="ann-desc">32-key keybed that is velocity sensitive and determines the note that is being played. Also contains a switch allowing the user to shift octaves.</div>
+        </div>
+      </button>
+
+      <button slot="hotspot-2" data-position="-192.20504528527863m 134.77360672702304m -185.75220407555642m" data-normal="1.7814180805767397e-7m 0.9706835476307132m 0.24036108328725192m" data-visibility-attribute="visible">
+        <div class="dot"></div>
+        <div class="annotation" id="ann2">
+          <div class="ann-title">Oscillators</div>
+          <div class="ann-desc">Generates the raw signal that eventually is shaped into a sound, generating waveforms that determine its fundamental pitch.</div>
+        </div>
+      </button>
+
+      <button slot="hotspot-3" data-position="205.0867082052357m 130.63422689211114m -169.03566901404895m" data-normal="1.9295500668567073e-7m 0.9706836140088744m 0.24036081522293484m" data-visibility-attribute="visible">
+        <div class="dot"></div>
+        <div class="annotation" id="ann3">
+          <div class="ann-title">Filter</div>
+          <div class="ann-desc">Controls the sound's timbre, or tone, by manipulating the frequencies that come from the sound being created.</div>
+        </div>
+      </button>
+
+      <button slot="hotspot-4" data-position="3.8188196084632864m 172.78614776213945m -342.5904046570096m" data-normal="0m 0.9703596594511266m 0.2416653291432058m" data-visibility-attribute="visible">
+        <div class="dot"></div>
+        <div class="annotation" id="ann4">
+          <div class="ann-title">Patchbay</div>
+          <div class="ann-desc">A hub that allows users to control the routing of audio inputs/outputs using patch cables.</div>
+        </div>
+      </button>
+
+      <button slot="hotspot-5" data-position="-532.7623296148098m 125.92158771958202m -150.00338503709776m" data-normal="-7.95527089346395e-7m 0.9706835502747732m 0.2403610726081267m" data-visibility-attribute="visible">
+        <div class="dot"></div>
+        <div class="annotation" id="ann5">
+          <div class="ann-title">Arpeggiator/Sequencer</div>
+          <div class="ann-desc">The arpeggiator converts chords into a repeating pattern of the individual chord's notes. The sequencer plays back a programmed series of notes determined by the user.</div>
+        </div>
+      </button>
+
+      <button slot="hotspot-6" data-position="534.193779356339m 131.43562001248813m -24.207875074481507m" data-normal="-0.028424030852517868m 0.9688261332776378m 0.24610566419405325m" data-visibility-attribute="visible">
+        <div class="dot"></div>
+        <div class="annotation" id="ann6">
+          <div class="ann-title">Spring Reverb</div>
+          <div class="ann-desc">This tool is used to add reverb, or sound reflection, onto the sound being created. Typically adds a bright, metallic effect onto the sound.</div>
+        </div>
+      </button>
     </model-viewer>
+    <p class="text-center text-nova-iron mb-1"><span class="text-nova-smoke">↻</span>Drag to rotate &nbsp; &nbsp; <span class="text-nova-smoke">+</span>Scroll to zoom &nbsp; &nbsp; Hover dots to inspect</p>
+
+    <!--Annotation Legend that allows users to see all the components and can click on to make the relevant annotation appear on the model-->
+    <!--Created with the help of ClaudeAI-->
+    <div class="legend grid gap-3 max-w-[900px] mx-auto mt-2 mb-12 px-6">
+      <div class="leg-item flex items-start gap-2.5 p-3 border border-nova-smoke bg-transparent transition-colors duration-300 hover:border-[#e8620a] cursor-pointer" data-hotspot="1">
+        <span class="font-orbitron text-lg text-nova-blue">01</span>
+        <div>
+          <strong class="block font-orbitron text-lg mb-1">Keyboard</strong>
+          <span class="text-nova-iron">32-key keybed that is velocity sensitive and determines the note that is being played. Also contains a switch allowing the user to shift octaves.</span>
+        </div>
+      </div>
+
+      <div class="leg-item flex items-start gap-2.5 p-3 border border-nova-smoke bg-transparent transition-colors duration-300 hover:border-[#e8620a] cursor-pointer" data-hotspot="2">
+        <span class="font-orbitron text-lg text-nova-blue">02</span>
+        <div>
+          <strong class="block font-orbitron text-lg mb-1">Oscillators</strong>
+          <span class="text-nova-iron">Generates the raw signal that eventually is shaped into a sound, generating waveforms that determine its fundamental pitch.</span>
+        </div>
+      </div>
+
+      <div class="leg-item flex items-start gap-2.5 p-3 border border-nova-smoke bg-transparent transition-colors duration-300 hover:border-[#e8620a] cursor-pointer" data-hotspot="3">
+        <span class="font-orbitron text-lg text-nova-blue">03</span>
+        <div>
+          <strong class="block font-orbitron text-lg mb-1">Filter</strong>
+          <span class="text-nova-iron">Controls the sound's timbre, or tone, by manipulating the frequencies that come from the sound being created.</span>
+        </div>
+      </div>
+
+      <div class="leg-item flex items-start gap-2.5 p-3 border border-nova-smoke bg-transparent transition-colors duration-300 hover:border-[#e8620a] cursor-pointer" data-hotspot="4">
+        <span class="font-orbitron text-lg text-nova-blue">04</span>
+        <div>
+          <strong class="block font-orbitron text-lg mb-1">Patchbay</strong>
+          <span class="text-nova-iron">A hub that allows users to control the routing of audio inputs/outputs using patch cables.</span>
+        </div>
+      </div>
+
+      <div class="leg-item flex items-start gap-2.5 p-3 border border-nova-smoke bg-transparent transition-colors duration-300 hover:border-[#e8620a] cursor-pointer" data-hotspot="5">
+        <span class="font-orbitron text-lg text-nova-blue">05</span>
+        <div class="min-w-0">
+          <strong class="block font-orbitron text-lg mb-1">Arpeggiator / Sequencer</strong>
+          <span class="text-nova-iron">The arpeggiator converts chords into a repeating pattern of the individual chord's notes. The sequencer plays back a programmed series of notes determined by the user.</span>
+        </div>
+      </div>
+
+      <div class="leg-item flex items-start gap-2.5 p-3 border border-nova-smoke bg-transparent transition-colors duration-300 hover:border-[#e8620a] cursor-pointer" data-hotspot="6">
+        <span class="font-orbitron text-lg text-nova-blue">06</span>
+        <div>
+          <strong class="block font-orbitron text-lg mb-1">Spring Reverb</strong>
+          <span class="text-nova-iron">This tool is used to add reverb, or sound reflection, onto the sound being created. Typically adds a bright, metallic effect onto the sound.</span>
+        </div>
+      </div>
+
+    </div>
   </main>
 <script src="js/script.js"></script>
+<script>
+  const mv = document.getElementById('mv');
+
+  //Show annotation when hovering over hotspot
+  for (let i = 1; i <= 6; i++) {
+    const btn = mv.querySelector(`[slot="hotspot-${i}"]`);
+    const ann = document.getElementById(`ann${i}`);
+    if (!btn || !ann) continue;
+
+    //Annotation is connected to the dot and appended inside the button
+    btn.style.position = 'relative';
+    btn.appendChild(ann);
+    ann.style.position = 'absolute';
+    ann.style.bottom = '20px';
+    ann.style.left = '50%';
+    ann.style.transform = 'translateX(-50%)';
+    ann.style.zIndex = 10;
+
+    //Event listeners to catch if button is being hovered
+    btn.addEventListener('mouseenter', ()=> ann.classList.add('visible'));
+    btn.addEventListener('mouseleave', ()=> ann.classList.remove('visible'));
+    btn.addEventListener('focus', ()=> ann.classList.add('visible'));
+    btn.addEventListener('blur', ()=> ann.classList.remove('visible'));
+  };
+
+  //Legend item is connected to the hotspot on the model, allowing users to click it and show the annotation on the model
+  document.querySelectorAll('[data-hotspot]').forEach(item=> {
+    const id = item.dataset.hotspot;
+    const ann = document.getElementById(`ann${id}`);
+    const btn = document.querySelector(`[slot="hotspot-${id}"]`);
+    if (!ann || !btn) return;
+
+    //Clicking item opens the annotation
+    item.addEventListener('click', ()=> {
+      const isVisible = ann.classList.contains('visible');
+
+      //Closes any open annotations
+      document.querySelectorAll('.annotation').forEach(a => a.classList.remove('visible'));
+
+      //If it isn't already open, open it
+      if(!isVisible) {
+        ann.classList.add('visible');
+      }
+    });
+  });
+</script>
 </body>
 </html>
